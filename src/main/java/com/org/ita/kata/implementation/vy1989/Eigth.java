@@ -1,5 +1,7 @@
 package com.org.ita.kata.implementation.vy1989;
 
+import java.math.BigDecimal;
+
 import com.org.ita.kata.Eight;
 
 public class Eigth implements Eight {
@@ -33,10 +35,39 @@ public class Eigth implements Eight {
         return 0;
     }
 
+    //Your task is to create a function that returns true if the given number is a Wilson prime.
     @Override
     public boolean amIWilson(double n) {
-        return false;
+    	if(isPrime(n)) {
+			BigDecimal one = new BigDecimal(1);
+			BigDecimal nPowed = new BigDecimal(Math.pow(n, 2));
+			return factorial(n - 1).add(one).remainder(nPowed) == BigDecimal.ZERO; // implements formula ((P-1)! + 1) / (P * P)
+		}
+		return false;
     }
+    private boolean isPrime(double n) {
+		if(n <= 1)return false;
+		int dividersCount = 0;
+		
+		for(long i = 1; i <= n; i++) {
+			if(n % i == 0)
+				dividersCount++;
+			if(dividersCount > 2) 
+				return false;
+		}
+		return true;
+	}
+	private BigDecimal factorial(double n) {
+		BigDecimal factorial = new BigDecimal(1);
+		
+		for(int i = 1; i <= n; i++) {
+			factorial = factorial.multiply(new BigDecimal(i));
+		}
+		return factorial;
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public double twoDecimalPlaces(double number) {
