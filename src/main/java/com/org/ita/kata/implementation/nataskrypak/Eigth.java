@@ -12,7 +12,6 @@ public class Eigth implements Eight {
     public double getVolumeOfCuboid(double length, double width, double height) {
         return length * width * height;
     }
-
     @Override
     public float mpgToKPM(float mpg) {
         return 0;
