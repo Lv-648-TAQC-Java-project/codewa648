@@ -8,10 +8,15 @@ public class Eigth implements Eight {
         return 0;
     }
 
-    @Override
-    public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
-    }
+    //Bob needs a fast way to calculate the volume of a cuboid with three values: 
+  	//length, width and the height of the cuboid. Write a function to help Bob with this calculation.
+  	@Override
+      public double getVolumeOfCuboid(double length, double width, double height) {
+          return length < 0 || width < 0 || height < 0 ? 0 : length * width * height;
+      }
+  	
+  	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public float mpgToKPM(float mpg) {
