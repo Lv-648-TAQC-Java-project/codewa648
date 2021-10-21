@@ -18,10 +18,28 @@ public class Eigth implements Eight {
         return 0;
     }
 
-    @Override
-    public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+    //Write a method, that will get an integer array as parameter and will process every number from this array.
+  	@Override
+     public int[] squareOrSquareRoot(int[] array) throws NullPointerException {
+        int arrayLength = 0;
+  	    int [] copyArr = null;
+  	    try {
+  			arrayLength = array.length;
+  			copyArr = new int [arrayLength];
+  		    for(int i = 0; i < arrayLength; i++) {
+  		    	double take = Math.sqrt(array[i]);
+  		    	copyArr[i] = (int) (take % 1 == 0 ? take : Math.pow(array[i],2));
+  		    }
+  		}
+  		catch(NullPointerException e) {
+  			System.out.println(e.getMessage());
+  		}
+  	    
+  	    return copyArr;
     }
+  	
+  	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
