@@ -15,7 +15,20 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int counter = 0;
+        int temp;
+        for (int i = 5; i <= n; i += 5) {
+            temp = i;
+            while (temp % 10 == 0) {
+                temp /= 10;
+                counter++;
+            }
+            while (temp % 5 == 0) {
+                temp /= 5;
+                counter++;
+            }
+        }
+        return counter;
     }
 
     @Override
