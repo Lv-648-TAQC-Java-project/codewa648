@@ -38,10 +38,14 @@ public class Eigth implements Eight {
         return false;
     }
 
-    @Override
-    public double twoDecimalPlaces(double number) {
-        return 0;
-    }
+    //Each number should be formatted that it is rounded to two decimal places
+  	@Override
+      public double twoDecimalPlaces(double number) {
+  		return Double.parseDouble(String.format("%.2f", number).replace(',', '.'));
+      }
+  	
+  	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
