@@ -8,7 +8,13 @@ public class Seven implements com.org.ita.kata.Seven {
 
     @Override
     public String seriesSum(int n) {
-        return null;
+    	double N = 1;
+	    
+		for(int i = 1, denom = 4; i < n; i++, denom+=3) 
+	    	N+= (double) 1 / denom;
+	    
+	    String strDouble = String.format("%.2f", N).replace(',', '.'); 
+	    return strDouble;
     }
 
     @Override
