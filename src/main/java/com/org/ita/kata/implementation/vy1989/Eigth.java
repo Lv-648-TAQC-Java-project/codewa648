@@ -1,12 +1,20 @@
 package com.org.ita.kata.implementation.vy1989;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import com.org.ita.kata.Eight;
 
 public class Eigth implements Eight {
-    @Override
-    public int liters(double time) {
-        return 0;
-    }
+	
+	//You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+	@Override
+	public int liters(double time) {
+	    return time > 0 ? (int) ((int)time * 0.5) : 0;
+	}
+		
+	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
