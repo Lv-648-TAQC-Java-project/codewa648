@@ -45,6 +45,18 @@ public class Eigth implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        String res = "";
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
+                res += "" + numbers[i] + ",";
+            }
+        }
+        String[] strNumbers = res.split(",");
+        int size = strNumbers.length;
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = Integer.parseInt(strNumbers[i]);
+        }
+        return arr;
     }
 }
