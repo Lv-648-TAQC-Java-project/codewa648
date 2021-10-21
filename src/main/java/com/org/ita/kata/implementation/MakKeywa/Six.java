@@ -33,6 +33,28 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        int[] amount = new int[lstOf1stLetter.length];
+        String letters = "";
+        String res = "";
+        int indexLetter;
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
+            letters += lstOf1stLetter[i];
+        }
+        for (int i = 0; i < lstOfArt.length; i++) {
+            indexLetter = letters.indexOf(lstOfArt[i].charAt(0));
+            if (indexLetter != -1) {
+                amount[indexLetter] += Integer.parseInt(
+                        lstOfArt[i].substring(lstOfArt[i].indexOf(" ") + 1)
+                );
+            }
+        }
+        for (int i = 0; i < amount.length ; i++) {
+            if (i == amount.length - 1) {
+                res += "(" + lstOf1stLetter[i] + " : " + amount[i] + ")";
+                break;
+            }
+            res += "(" + lstOf1stLetter[i] + " : " + amount[i] + ") - ";
+        }
+        return res;
     }
 }
