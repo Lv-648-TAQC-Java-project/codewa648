@@ -2,6 +2,8 @@ package com.org.ita.kata.implementation.Mykhailo5;
 
 import com.org.ita.kata.Eight;
 
+import java.util.Arrays;
+
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
@@ -45,6 +47,14 @@ public class Eigth implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int[] newArray = new int[numbers.length];
+        int result = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if(numbers[i]%divider==0){
+                newArray[result]=numbers[i];
+                result++;
+            }
+        }
+        return Arrays.copyOf(newArray, result);
     }
 }
