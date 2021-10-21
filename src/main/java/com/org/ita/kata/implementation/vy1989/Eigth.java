@@ -23,10 +23,29 @@ public class Eigth implements Eight {
         return new int[0];
     }
 
-    @Override
-    public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
-    }
+    //Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers.
+  	@Override
+      public int[] countPositivesSumNegatives(int[] input) throws NullPointerException {
+      	int[] countOfPositivesAndSumOfNegatives = new int [0];
+  		try {
+  		    if(input.length > 0) countOfPositivesAndSumOfNegatives = new int [2];
+  			
+  			for(int el : input) {
+  			    if(el > 0) 
+  			        countOfPositivesAndSumOfNegatives[0]++;
+  				else if(el < 0) 
+  			        countOfPositivesAndSumOfNegatives[1] += el;
+  			 } 
+  		}
+  		catch(NullPointerException e) {
+  			 System.out.println(e.getMessage());
+  		}
+  		 
+  		return countOfPositivesAndSumOfNegatives;
+      }
+  	
+  	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public int stringToNumber(String str) {
