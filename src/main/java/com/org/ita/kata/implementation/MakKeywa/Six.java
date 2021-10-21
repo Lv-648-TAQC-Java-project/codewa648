@@ -28,7 +28,8 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return null;
+
+        gfdgdfsg
     }
 
     @Override
