@@ -63,7 +63,20 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        long fact=1;
+        for(int i=1;i<n+1;i++){
+            fact*=i;
+        }
+        int countOfNull=0;
+        long number=0;
+        while(number==0){
+            number=fact%10;
+            if(number==0){
+                countOfNull++;
+            }
+            fact/=10;
+        }
+        return countOfNull;
     }
 
     @Override
