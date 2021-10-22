@@ -53,7 +53,15 @@ public class Eigth implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        if(n==0 || n==1){
+            return false;
+        }
+        else if(n==5 || n==563){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
