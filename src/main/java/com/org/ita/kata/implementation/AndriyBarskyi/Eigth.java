@@ -30,7 +30,7 @@ public class Eigth implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     @Override
@@ -39,9 +39,7 @@ public class Eigth implements Eight {
     }
 
     @Override
-    public double twoDecimalPlaces(double number) {
-        return 0;
-    }
+    public double twoDecimalPlaces(double number) { return 0; }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
