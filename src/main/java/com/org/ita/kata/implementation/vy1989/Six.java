@@ -1,12 +1,28 @@
 package com.org.ita.kata.implementation.vy1989;
 
 public class Six implements com.org.ita.kata.Six {
-    @Override
+    
+	/*Your task is to construct a building which will be a pile of n cubes. 
+	 * The cube at the bottom will have a volume of n^3, 
+	 * the cube above will have volume of (n-1)^3 and so on until the top which will have a volume of 1^3.
+	 */
+	@Override
     public long findNb(long m) {
-        return 0;
+		long countOfCubes = 0;
+		long sumOfVolumesOfCubes = 0;
+		
+		for(long i = m; i >= 1; i-= (long)Math.pow(countOfCubes, 3)) 
+			countOfCubes++;
+		
+		for(long i = 1; i <= countOfCubes;i++) 
+			sumOfVolumesOfCubes +=  (long)Math.pow(i, 3);
+		
+		return sumOfVolumesOfCubes == m ? countOfCubes : -1;
     }
-
-    @Override
+	
+	//------------------------------------------------------------------------------------------------------
+    
+	@Override
     public String balance(String book) {
         return null;
     }
