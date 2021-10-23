@@ -3,7 +3,11 @@ package com.org.ita.kata.implementation.AndriyBarskyi;
 public class Seven implements com.org.ita.kata.Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        return 0;
+        double sum = 0;
+        for (double i: arr) sum += i;
+        long res = (long) Math.ceil((arr.length + 1) * navg - sum);
+        if (res < 0) throw new IllegalArgumentException();
+        return res;
     }
 
     @Override
