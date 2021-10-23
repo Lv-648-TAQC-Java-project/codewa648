@@ -15,7 +15,7 @@ public class Eigth implements Eight {
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        return Math.round(mpg * 35.4006004) / 100f;
     }
 
     @Override
