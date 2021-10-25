@@ -15,7 +15,13 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public int zeros(int n) {
-        return 0;
+        int count = 0;
+        int divider = 5;
+        while ((n/divider) > 0) {
+            count += n / divider;
+            divider *= 5;
+        }
+        return count;
     }
 
     @Override
