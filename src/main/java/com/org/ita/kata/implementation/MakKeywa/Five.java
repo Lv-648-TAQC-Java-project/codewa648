@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.MakKeywa;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class Five implements com.org.ita.kata.Five {
     @Override
@@ -53,6 +54,51 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        int[] digits = new int[("" + n).length()];
+        long[] res = new long[]{n, -1, -1};
+        for (int i = digits.length - 1; i > -1; i--) {
+            digits[i] = (int) (n % 10);
+            n /= 10;
+        }
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                if (i != j || digits[i] != digits[j]) {
+                    long attempt = arrToLong(swapIToStart(digits, i, j));
+                    if (res[0] > attempt) {
+                        res[0] = attempt;
+                        res[1] = i;
+                        res[2] = j;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public static long arrToLong(int[] digit) {
+        String number = "";
+        for (int i = 0; i < digit.length; i++) {
+            number += "" + digit[i];
+        }
+        return Long.parseLong(number);
+    }
+
+    public static int[] swapIToStart(int[] digit, int i, int j) {
+        int[] copy = new int[digit.length];
+        Arrays.fill(copy, -1);
+        copy[j] = digit[i];
+        int m = 0;
+        for (int k = 0; k < copy.length; k++) {
+            if (copy[k] == -1) {
+                if (m != i){
+                    copy[k] = digit[m++];
+                }else{
+                    copy[k] = digit[++m];
+                    m++;
+                }
+
+            }
+        }
+        return copy;
     }
 }
