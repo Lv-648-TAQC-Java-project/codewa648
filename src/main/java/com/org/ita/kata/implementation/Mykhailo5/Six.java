@@ -3,7 +3,19 @@ package com.org.ita.kata.implementation.Mykhailo5;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long sum = 0;
+        int counter = 0;
+
+        while(sum<m){
+            counter++;
+            sum+=(long)counter*counter*counter;
+        }
+        if(sum==m){
+            return counter;
+        }
+        else{
+            return -1;
+        }
     }
 
     @Override
