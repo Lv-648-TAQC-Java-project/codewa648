@@ -3,7 +3,13 @@ package com.org.ita.kata.implementation.nataskrypak;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long i = 0;
+        long cube = 0;
+        while (cube < m) {
+            i++;
+            cube += (i * i * i);
+        }
+        return cube != m ? -1 : i;
     }
 
     @Override
