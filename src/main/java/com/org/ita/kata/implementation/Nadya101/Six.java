@@ -3,7 +3,17 @@ package com.org.ita.kata.implementation.Nadya101;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long volumeOfCube = 0;
+        long n = 0;
+        while (volumeOfCube < m) {
+            n += 1;
+            volumeOfCube += Math.pow(n, 3);
+        }
+        if (volumeOfCube == m) {
+            return n;
+        } else {
+            return -1;
+        }
     }
 
     @Override
