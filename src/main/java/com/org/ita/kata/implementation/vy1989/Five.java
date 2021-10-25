@@ -12,12 +12,17 @@ public class Five implements com.org.ita.kata.Five {
     public long[] gap(int g, long m, long n) {
         return new long[0];
     }
-
+    
+    //Write a program that will calculate the number of trailing zeros in a factorial of a given number.
     @Override
     public int zeros(int n) {
-        return 0;
+    	int zeros = 0;
+		for(int i = n; i>0; i/=5,zeros+=i);
+		return zeros;
     }
-
+    
+    //--------------------------------------------------------------------------------------------------
+    
     @Override
     public BigInteger perimeter(BigInteger n) {
         return null;
