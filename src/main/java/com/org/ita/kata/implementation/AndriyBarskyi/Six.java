@@ -8,7 +8,28 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
-        return null;
+        book = book.replaceAll("[^0-9A-z\\.\n ]", "");
+        book = book.replaceAll("  ", " ");
+        book = book.replaceAll(" \n", "\n");
+        book = book.trim();
+        System.out.println("Clear book\n" + book);
+        String[] arr = book.split("\\n");
+        double bal = Double.parseDouble(arr[0]);
+        double totalExpense = 0;
+        for (int i = 1; i < arr.length; i++) {
+            totalExpense += Double.parseDouble(arr[i].split(" ")[2]);
+            bal -= Double.parseDouble(arr[i].split(" ")[2]);
+            arr[i] += " Balance " + String.format("%.2f", bal);
+        }
+        StringBuilder newBook = new StringBuilder("Original Balance: ");
+        for (String s : arr) {
+            newBook.append(s).append("\\r\\n");
+        }
+        newBook.append("Total expense  ").append(String.format("%.2f",
+                totalExpense)).append("\\r\\n");
+        newBook.append("Average expense  ").append(String.format("%.2f",
+                totalExpense / (arr.length - 1)));
+        return newBook.toString();
     }
 
     @Override
