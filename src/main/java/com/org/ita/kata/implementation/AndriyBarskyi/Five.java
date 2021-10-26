@@ -8,9 +8,25 @@ public class Five implements com.org.ita.kata.Five {
         return 0;
     }
 
+    public static boolean isPrimeNumber(long i) {
+        for (long j = 2; j < i / 2; j++) {
+            if (i % j == 0) return false;
+        }
+        return true;
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long h = 0;
+        for (long i = m; i <= n; i++) {
+            if (isPrimeNumber(i)) {
+                if (i - h == g) {
+                    return new long[]{h, i};
+                }
+                h = i;
+            }
+        }
+        return null;
     }
 
     @Override
