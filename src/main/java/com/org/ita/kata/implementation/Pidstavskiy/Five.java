@@ -24,7 +24,16 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger prevFib = BigInteger.valueOf(0);
+        BigInteger currentFib = BigInteger.valueOf(1);
+        BigInteger sumFib = BigInteger.valueOf(1);
+
+        for (BigInteger i = BigInteger.valueOf(1); i.compareTo(n) < 1; i = i.add(BigInteger.valueOf(1))) {
+            currentFib = currentFib.add(prevFib);
+            prevFib = currentFib.subtract(prevFib);
+            sumFib = sumFib.add(currentFib);
+        }
+        return sumFib.multiply(BigInteger.valueOf(4));
     }
 
     @Override
