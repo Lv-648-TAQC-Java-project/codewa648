@@ -34,7 +34,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / (1 + Math.sqrt(1.0 + x));
     }
 
     @Override
