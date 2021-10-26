@@ -86,7 +86,8 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public double solveSum(double m) {
-        return 0;
+        double s =  Math.sqrt(4 * m + 1);
+        return (1 - s) / (2 * m) + 1;
     }
 
     @Override
