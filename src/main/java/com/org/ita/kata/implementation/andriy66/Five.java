@@ -55,7 +55,6 @@ public class Five implements com.org.ita.kata.Five {
 
 
 
-
     @Override
     public long[] gap(int g, long m, long n) {
         return new long[0];
