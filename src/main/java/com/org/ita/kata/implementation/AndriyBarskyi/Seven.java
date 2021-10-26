@@ -8,7 +8,14 @@ public class Seven implements com.org.ita.kata.Seven {
 
     @Override
     public String seriesSum(int n) {
-        return null;
+        if (n == 0) return "0.00";
+        double sum = 0;
+        double denominator = 1;
+        for (int i = n; i > 0; i--) {
+            sum += 1 / denominator;
+            denominator += 3;
+        }
+        return String.format("%.2f", sum);
     }
 
     @Override
