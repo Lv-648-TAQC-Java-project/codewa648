@@ -3,7 +3,17 @@ package com.org.ita.kata.implementation.Pidstavskiy;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long actualVolume = 0;
+        long count = 0;
+        while (actualVolume < m) {
+            count++;
+            actualVolume += count * count * count;
+        }
+        if (actualVolume == m) {
+            return count;
+        } else {
+            return -1;
+        }
     }
 
     @Override
