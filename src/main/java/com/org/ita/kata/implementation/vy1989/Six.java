@@ -10,12 +10,15 @@ public class Six implements com.org.ita.kata.Six {
     public String balance(String book) {
         return null;
     }
-
+    
+    /*modify f(x) to give a good approximation of f(x) in the neighborhood of 0*/
     @Override
     public double f(double x) {
-        return 0;
+    	return x/(Math.sqrt(1 + x) + 1);
     }
-
+    
+    //---------------------------------------------------------------------------
+    
     @Override
     public double mean(String town, String strng) {
         return 0;
