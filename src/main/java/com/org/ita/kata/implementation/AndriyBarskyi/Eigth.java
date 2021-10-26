@@ -10,6 +10,8 @@ public class Eigth implements Eight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
+        if (length > 0 && height > 0 && width > 0)
+            return length * height * width;
         return 0;
     }
 
