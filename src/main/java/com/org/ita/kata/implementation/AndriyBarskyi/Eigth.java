@@ -5,6 +5,9 @@ import com.org.ita.kata.Eight;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
+        if (time > 0) {
+            return (int) (time / 2);
+        }
         return 0;
     }
 
