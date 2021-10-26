@@ -14,7 +14,22 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
-        return null;
+        StringBuilder result = new StringBuilder();
+        String[] splittedLine = book.replaceAll("[^a-zA-Z0-9 \\n.]"," ").replaceAll(" {2,}", " ").split("\n");
+        double balance = Double.parseDouble(splittedLine[0]);
+        double expense = 0;
+        result.append("Original Balance: ").append(String.format("%.2f", balance)).append("\\r\\n");
+        for(int i = 1; i < splittedLine.length; i++) {
+            String[] splittedItems = splittedLine[i].split(" ");
+            double itemExpense = Double.parseDouble(splittedItems[splittedItems.length - 1]);
+            balance -= itemExpense;
+            expense += itemExpense;
+            result.append(splittedLine[i].trim()).append(" Balance ").append(String.format("%.2f", balance)).append("\\r\\n");
+        }
+        result.append("Total expense  ").append(String.format("%.2f", expense)).append("\\r\\n");
+        result.append("Average expense  ").append(String.format("%.2f", expense / (splittedLine.length - 1)));
+
+        return result.toString();
     }
 
     @Override
