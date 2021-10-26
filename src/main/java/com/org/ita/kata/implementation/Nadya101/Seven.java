@@ -8,7 +8,15 @@ public class Seven implements com.org.ita.kata.Seven {
 
     @Override
     public String seriesSum(int n) {
-        return null;
+        double sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += (double) 1 / (1 + i * 3);
+        }
+        double roundSum = Math.round(sum * 100.0) / 100.0;
+        if (roundSum == 0) {
+            return "0.00";
+        }
+        return Double.toString(roundSum);
     }
 
     @Override
