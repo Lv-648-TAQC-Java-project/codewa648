@@ -13,6 +13,10 @@ public class Seven implements com.org.ita.kata.Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        if (p - bef <= aft)
+            return p - bef;
+        else {
+            return aft + 1;
+        }
     }
 }
