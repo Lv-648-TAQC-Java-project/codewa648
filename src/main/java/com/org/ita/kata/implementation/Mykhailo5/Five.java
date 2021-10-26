@@ -20,7 +20,19 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger p0 = BigInteger.valueOf(0);
+        BigInteger p1 = BigInteger.valueOf(1);
+        BigInteger p2 = BigInteger.valueOf(1);
+        BigInteger sum = BigInteger.valueOf(0);
+
+        for (int i = 0; i <= n.intValue(); i++) {
+            p0 = p1;
+            p1 = p2;
+            p2 = p0.add(p1);
+            sum = sum.add(p0);
+        }
+
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override
