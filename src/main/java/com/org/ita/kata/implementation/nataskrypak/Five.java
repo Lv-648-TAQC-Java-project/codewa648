@@ -20,7 +20,7 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+
     }
 
     @Override
