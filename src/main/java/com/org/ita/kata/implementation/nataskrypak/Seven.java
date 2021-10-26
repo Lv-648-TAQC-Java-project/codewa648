@@ -1,10 +1,16 @@
 package com.org.ita.kata.implementation.nataskrypak;
 import java.text.DecimalFormat;
 
+import java.util.stream.DoubleStream;
+
 public class Seven implements com.org.ita.kata.Seven {
     @Override
     public long newAvg(double[] arr, double navg) {
-        return 0;
+        double result = navg * (arr.length + 1) - DoubleStream.of(arr).sum();
+        if (result <= 0) {
+            throw new IllegalArgumentException();
+        }
+        return (long) (Math.ceil(result));
     }
 
     @Override
