@@ -3,7 +3,12 @@ package com.org.ita.kata.implementation.AndriyBarskyi;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long n = 0, sum = 0;
+        while (sum < m) {
+            n++;
+            sum += n * n * n;
+        }
+        return sum == m ? n : -1;
     }
 
     @Override
