@@ -4,10 +4,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Six implements com.org.ita.kata.Six {
-    @Override
+    
+	/*Your task is to construct a building which will be a pile of n cubes. 
+	 * The cube at the bottom will have a volume of n^3, 
+	 * the cube above will have volume of (n-1)^3 and so on until the top which will have a volume of 1^3.
+	 */
+	@Override
     public long findNb(long m) {
-        return 0;
+		long countOfCubes = 0;
+		long sumOfVolumesOfCubes = 0;
+		
+		for(long i = m; i >= 1; i-= (long)Math.pow(countOfCubes, 3)) 
+			countOfCubes++;
+		
+		for(long i = 1; i <= countOfCubes;i++) 
+			sumOfVolumesOfCubes +=  (long)Math.pow(i, 3);
+		
+		return sumOfVolumesOfCubes == m ? countOfCubes : -1;
     }
+
 
     /*You are given a (small) check book as a - sometimes - cluttered (by non-alphanumeric characters) string
 	The first line shows the original balance. Each other line (when not blank) gives information: check number, category, check amount. 
