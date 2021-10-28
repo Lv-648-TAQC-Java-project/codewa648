@@ -22,12 +22,7 @@ public class Six implements com.org.ita.kata.Six {
 		
 		return sumOfVolumesOfCubes == m ? countOfCubes : -1;
     }
-<<<<<<< HEAD
-	
-	//------------------------------------------------------------------------------------------------------
-    
-	@Override
-=======
+
 
     /*You are given a (small) check book as a - sometimes - cluttered (by non-alphanumeric characters) string
 	The first line shows the original balance. Each other line (when not blank) gives information: check number, category, check amount. 
@@ -38,7 +33,6 @@ public class Six implements com.org.ita.kata.Six {
 	On each line of the report you have to add the new balance and then in the last two lines the total expense and the average expense. 
 	So as not to have a too long result string we don't ask for a properly formatted result.*/
     @Override
->>>>>>> refs/heads/main
     public String balance(String book) {
     	StringBuilder bookBuilder = new StringBuilder();
 		double totalBalance = 0;
