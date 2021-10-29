@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
@@ -43,12 +44,24 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        return Arrays.stream(strng.split("\n"))
+                .filter(s -> s.substring(0,s.indexOf(":")).equals(town))
+                .flatMap(s -> Arrays.stream(s.split(",")))
+                .mapToDouble(s -> Double.valueOf(s.substring(s.indexOf(" "))))
+                .average()
+                .orElse(-1.);
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        double mean = mean(town, strng);
+        return Arrays.stream(strng.split("\n"))
+                .filter(s -> s.substring(0,s.indexOf(":")).equals(town))
+                .flatMap(s -> Arrays.stream(s.split(",")))
+                .mapToDouble(s -> Double.valueOf(s.substring(s.indexOf(" "))))
+                .map(d -> (d - mean) * (d - mean))
+                .average()
+                .orElse(-1.);
     }
 
     @Override
