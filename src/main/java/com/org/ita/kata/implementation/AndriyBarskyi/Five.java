@@ -48,8 +48,33 @@ public class Five implements com.org.ita.kata.Five {
         return 0;
     }
 
+    private static long replace(long n, int i, int j) {
+        StringBuilder value = new StringBuilder(String.valueOf(n));
+        char c = value.charAt(i);
+        value.deleteCharAt(i);
+        value.insert(j, c);
+        return Long.parseLong(value.toString());
+    }
+
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        long minVal = n;
+        long minI = 0;
+        long minJ = 0;
+        String val = String.valueOf(n);
+        for (int i = 0; i < val.length(); i++) {
+            for (int j = 0; j < val.length(); j++) {
+                if (i == j) {
+                    continue;
+                }
+                long replaced = replace(n, i, j);
+                if (replaced < minVal) {
+                    minVal = replaced;
+                    minI = i;
+                    minJ = j;
+                }
+            }
+        }
+        return new long[]{minVal, minI, minJ};
     }
 }
