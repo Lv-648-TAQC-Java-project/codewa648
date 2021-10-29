@@ -45,6 +45,27 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        if(lstOfArt.length==0 || lstOf1stLetter.length==0){
+            return "";
+        }
+        String answer = "";
+        for (int i = 0; i < lstOf1stLetter.length ; i++) {
+            String bigLetter = lstOf1stLetter[i];
+            int count = 0;
+            for (int x = 0; x < lstOfArt.length; x++) {
+                String art = lstOfArt[x];
+                if (art.substring(0, 1).equals(bigLetter)) {
+                    String[] artValues = art.split(" ");
+                    count += Integer.parseInt(artValues[1]);
+                }
+            }
+            String res = "(" + bigLetter + " : " + count + ")";
+            if (i != lstOf1stLetter.length - 1) {
+                answer += res + " - ";
+            } else {
+                answer += res;
+            }
+        }
+        return answer;
     }
 }
