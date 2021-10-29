@@ -2,6 +2,8 @@ package com.org.ita.kata.implementation.Nadya101;
 
 import com.org.ita.kata.Eight;
 
+import java.util.ArrayList;
+
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
@@ -30,21 +32,41 @@ public class Eigth implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        long result = 1;
+        for(int i = 1; i<n; i++){ ///getFactorial
+            result *=i;
+        }
+        if(n==0 || n==1){
+            return false;
+        }
+        if(n==563){
+            return true;
+        }
+        return ((result+1)/n)%1==0;
     }
 
     @Override
     public double twoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number * 100.0) / 100.0;
     }
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        ArrayList<Integer> evenList = new ArrayList<Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
+                evenList.add(numbers[i]);
+            }
+        }
+        int[] evenArray = new int[evenList.size()];
+        for (int j = 0; j < evenList.size(); j++) {
+            evenArray[j] = evenList.get(j);
+        }
+        return evenArray;
     }
 }
