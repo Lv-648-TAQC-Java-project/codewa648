@@ -57,7 +57,25 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long k = 0;
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                if (i - k == g) {
+                    return new long[]{k, i};
+                }
+                k = i;
+            }
+        }
+        return null;
+    }
+
+    public static boolean isPrime(long n) {
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
