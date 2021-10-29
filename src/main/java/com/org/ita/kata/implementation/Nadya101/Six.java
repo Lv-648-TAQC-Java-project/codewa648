@@ -44,12 +44,43 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        String[] lines = strng.split("\n");
+        double avrg = 0;
+        double sum = 0;
+        if (strng.length() == 0) {
+            return -1;
+        }
+        for (String line : lines) {
+            if (line.startsWith(town + ":")) {
+                String clearLine = line.replaceAll("[^0-9.,]", "");
+                String[] tempOfMonths = clearLine.split(",");
+                for (String tempOfMonth : tempOfMonths) {
+                    System.out.print(tempOfMonth + " ");
+                    sum += Double.parseDouble(tempOfMonth);
+                }
+            }
+        }
+        return sum / 12.0;
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        String[] lines = strng.split("\n");
+        double sum = 0;
+        if (strng.length() == 0) {
+            return -1;
+        }
+        for (String line : lines) {
+            if (line.startsWith(town + ":")) {
+                String clearLine = line.replaceAll("[^0-9.,]", "");
+                String[] tempOfMonths = clearLine.split(",");
+                for (String tempOfMonth : tempOfMonths) {
+                    double temp = Double.parseDouble(tempOfMonth);
+                    sum += Math.pow(temp - mean(town, strng), 2);
+                }
+            }
+        }
+        return sum / 12.0;
     }
 
     @Override
