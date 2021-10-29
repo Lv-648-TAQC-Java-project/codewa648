@@ -55,11 +55,22 @@ public class Five implements com.org.ita.kata.Five {
 
 
 
-
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long a = 0, b = 0;
+        for (long i = m; i <= n; i++) {
+            if (b - a == g) {return new long[] {a, b};}
+            if (isPrime(i)) {  a = b; b = i;  }
+        }
+        return null;
     }
+    private static boolean isPrime(long n) {
+        if (n % 2 == 0){ return false;}
+        for (long i = 3; i * i <= n ; i += 2)
+            if (n % i == 0){ return false;}
+        return true;
+    }
+
 
     @Override
     public int zeros(int n) {
@@ -81,7 +92,19 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        BigInteger c = BigInteger.ONE;
+        BigInteger sum = BigInteger.ZERO;
+
+        for(int i = 0; i <= n.intValue(); i++) {
+            a = b;
+            b = c;
+            c = a.add(b);
+            sum = sum.add(a);
+        }
+
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     @Override
@@ -92,6 +115,15 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        final String s = ""+n;
+        long[] result = new long[]{Long.MAX_VALUE,0,0};
+        for (int i=s.length()-1; i>=0; i--) {
+            final String s1=s.substring(0,i)+s.substring(i+1);
+            for (int j=s.length()-1; j>=0; j--) {
+                final long tmp = Long.valueOf(s1.substring(0,j)+s.charAt(i)+s1.substring(j));
+                if (tmp <= result[0]) result = new long[]{tmp,i,j};
+            }
+        }
+        return result;
     }
 }
