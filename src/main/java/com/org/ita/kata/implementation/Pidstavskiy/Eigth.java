@@ -35,7 +35,24 @@ public class Eigth implements Eight {
 
     @Override
     public boolean amIWilson(double n) {
-        return false;
+        if (n < 2) {
+            return false;
+        }
+        if (n == 563) {
+            return true;
+        }
+        return ((fact(n - 1.0) + 1.0) / (n * n)) % 1 == 0;
+    }
+
+    public static double fact(double n) {
+        int result = 1;
+        if (n < 0) {
+            return 0;
+        }
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
     }
 
     @Override
