@@ -5,7 +5,19 @@ import java.math.BigInteger;
 public class Five implements com.org.ita.kata.Five {
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        int maxSection = 1;
+        int lower = 0;
+        int currentSection = 1;
+        for(int i = 1; i < v.length; i++){
+            if(v[i] < v[i-1]){
+                lower = i;
+            }else if(v[i] > v[i-1]){
+                maxSection = Math.max(maxSection, currentSection);
+                currentSection = i-lower;
+            }
+            currentSection++;
+        }
+        return Math.max(maxSection, currentSection);
     }
 
     @Override
