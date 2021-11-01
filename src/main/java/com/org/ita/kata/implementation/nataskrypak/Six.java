@@ -33,11 +33,10 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) return "";
-
-        //int sum = 0;
-        String result = "";
-
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return " ";
+        }
+        String result = " ";
         for (String i : lstOf1stLetter) {
             int sum = 0;
             for (String j : lstOfArt) {
@@ -45,7 +44,6 @@ public class Six implements com.org.ita.kata.Six {
             }
             result += " - (" + i + " : " + sum + ")";
         }
-
         return result.substring(3);
     }
 }
