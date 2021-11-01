@@ -97,7 +97,97 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return null;
+        int wins = 0;
+        int draws = 0;
+        int loses = 0;
+        int scores = 0;
+        int concedes = 0;
+        int points = 0;
+        String rezult = "";
+
+        if(toFind.equals(rezult)){
+            return rezult;
+        }
+
+        String[] Matches = resultSheet.split(",");
+        for (int i = 0; i < Matches.length; i++) {
+            if(Matches[i].matches(".*[0-9]+[.][0-9]+.*")){
+                rezult = "Error(float number):"  + Matches[i];
+                return rezult;
+            }
+        }
+        String[] Team1 = new String[Matches.length];
+        int[] scoresTeam1 = new int[Matches.length];
+        String[] Team2 = new String[Matches.length];
+        int[] scoresTeam2 = new int[Matches.length];
+
+        String[] parseOneMatch;
+        boolean firstTeamParsed;
+
+        for (int i = 0; i < Matches.length; i++) {
+            parseOneMatch = Matches[i].split(" ");
+            Team1[i] = "";
+            Team2[i] = "";
+            firstTeamParsed = false;
+            for (int x = 0; x < parseOneMatch.length; x++) {
+                if (!parseOneMatch[x].matches("^[0-9]+$")) {
+                    if (!firstTeamParsed) {
+                        Team1[i] += parseOneMatch[x] + " ";
+                    } else {
+                        Team2[i] += parseOneMatch[x] + " ";
+                    }
+                }
+                else {
+                    if (!firstTeamParsed) {
+                        scoresTeam1[i] = Integer.parseInt(parseOneMatch[x]);
+                        firstTeamParsed = true;
+                    } else {
+                        scoresTeam2[i] = Integer.parseInt(parseOneMatch[x]);
+                    }
+                }
+            }
+        }
+        boolean teamFound = false;
+        for (int i = 0; i < Matches.length; i++) {
+            if ((toFind + " ").equals(Team1[i])) {
+                if (scoresTeam1[i] > scoresTeam2[i]) {
+                    wins++;
+                    points += 3;
+                }
+                if (scoresTeam1[i] == scoresTeam2[i]) {
+                    draws++;
+                    points += 1;
+                }
+                if (scoresTeam1[i] < scoresTeam2[i]) {
+                    loses++;
+                }
+                scores += scoresTeam1[i];
+                concedes += scoresTeam2[i];
+                teamFound = true;
+            }
+            if ((toFind + " ").equals(Team2[i])) {
+                if (scoresTeam1[i] < scoresTeam2[i]) {
+                    wins++;
+                    points += 3;
+                }
+                if (scoresTeam1[i] == scoresTeam2[i]) {
+                    draws++;
+                    points += 1;
+                }
+                if (scoresTeam1[i] > scoresTeam2[i]) {
+                    loses++;
+                }
+                scores += scoresTeam2[i];
+                concedes += scoresTeam1[i];
+                teamFound = true;
+            }
+        }
+        if (!teamFound) {
+            rezult =  toFind + ":This team didn't play!";
+        } else {
+            rezult = toFind + ":" + "W=" + wins + ";D=" + draws + ";L=" + loses + ";Scored=" + scores + ";Conceded=" + concedes + ";Points=" + points;
+        }
+        return rezult;
     }
 
     @Override
