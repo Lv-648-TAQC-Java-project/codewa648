@@ -5,7 +5,21 @@ import java.math.BigInteger;
 public class Five implements com.org.ita.kata.Five {
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        int k = 0;
+        int low = 0;
+        int size = 1;
+
+        for (int i = 1; i < v.length; i++) {
+            if (v[i] < v[i-1]){
+                low = i;
+            }
+            else if (v[i] > v[i-1]) {
+                k = Math.max(k, size);
+                size = i - low;
+            }
+            size++;
+        }
+        return Math.max(k, size);
     }
 
     public static boolean isPrime(long num){
