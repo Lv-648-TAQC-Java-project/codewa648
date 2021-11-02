@@ -1,8 +1,5 @@
 package com.org.ita.utils;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class Menu {
 
     private ConsoleScanner cs;
@@ -10,61 +7,116 @@ public class Menu {
     private Runner runner;
 
     public Menu() {
-        cs = new ConsoleScanner();
+        
+    }
+    public void run() {
+    	cs = new ConsoleScanner();
         runner = new Runner();
         chooseImpl();
     }
 
     private void chooseImpl(){
         Users.printAllUserName();
-        System.out.println("Choose id of implementation:");
-        long userId = cs.readLong();
-        user = Users.getById(userId);
+        System.out.println("Choose id of implementation or type 0 for exit");
+        int userId = cs.readInt();
+        
+        switch(userId) {
+            case 0: System.exit(0);
+            case 1:
+            case 2: 
+            case 3:
+            	user = Users.getById(userId);
+            	runner.setUserImpl(user);
+            	chooseKata();
+            default:
+            	System.err.println("Wrong input!\n");
+                chooseImpl();
+        }
+       
     }
 
     public void listCommands() {
         System.out.println("1-Show users\n2-Set user\n3-Show tasks");
     }
 
-    public void run() {
-        sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("Choose implementation:");
-            System.out.println("1-andrij66 \n2-AndriyBarskyi");
-            String pos = sc.nextLine();//try catch
-            boolean exit = false;
-            switch (pos) {
-                case "0":
-                    exit = true;
-                    break;
-                case "1":
-                    impl_five = new com.org.ita.kata.implementation.andriy66.Five();
-                    impl_six = new com.org.ita.kata.implementation.andriy66.Six();
-                    impl_seven = new com.org.ita.kata.implementation.andriy66.Seven();
-                    impl_eigth = new com.org.ita.kata.implementation.andriy66.Eigth();
-                    not_null = true;
-                    break;
-                case "2":
-                    impl_five = new com.org.ita.kata.implementation.AndriyBarskyi.Five();
-                    impl_six = new com.org.ita.kata.implementation.AndriyBarskyi.Six();
-                    impl_seven = new com.org.ita.kata.implementation.AndriyBarskyi.Seven();
-                    impl_eigth = new com.org.ita.kata.implementation.AndriyBarskyi.Eigth();
-                    not_null = true;
-                    break;
-                default:
-                    System.err.println("Wrong input!");
-                    break;
-            }
-            if (exit) {
+    
+    private void chooseKata() {
+    	System.out.println("Choose kata or type 0 to return on previous level");
+        System.out.println("5-Five \n6-Six \n7-Seven\n8-Eigth");
+        int kata = cs.readInt();//try catch
+        
+        switch (kata) {
+            case 0:
+            	chooseImpl();
                 break;
-            }
-            if (not_null) {
-                change_kata();
-            }
+            case 6: 
+                chooseSix();
+                break;
+            
+            case 8:
+                chooseEight();
+                break;
+            /*case "6":
+                choose_six();
+                break;
+            case "7":
+                choose_seven();
+                break;
+            case "8":
+                choose_eigth();
+                break;*/
+            default:
+                System.err.println("Wrong input!");
+                chooseKata();
+                break;
         }
+        chooseKata();
     }
-
-    private void change_kata() {
+    public void chooseEight() {
+    	System.out.println("Choose task to run or type 0 to return on previous level: ");
+        System.out.println("3-MpgToKpm");
+        int task = cs.readInt();
+        
+        
+        switch (task) {
+            case 0:
+            	chooseKata();
+                break;
+            case 3:
+                runner.runMpgToKpm();
+                break;
+                
+            default:
+                System.err.println("Wrong input!");
+                chooseEight();
+                break;
+        }
+        chooseEight();
+    }
+    public void chooseSix() {
+    	System.out.println("Choose task to run or type 0 to return on previous level: ");
+        System.out.println("6-nbaCup\n2-Balance");
+        int task = cs.readInt();
+        
+        
+        switch (task) {
+            case 0:
+            	chooseKata();
+                break;
+            case 2:
+                runner.runBalance();
+                break; 
+            case 6:
+                runner.runNbaCup();
+                break;
+            default:
+                System.err.println("Wrong input!");
+                chooseSix();
+                break;
+        }
+        chooseSix();
+    }
+  /*  private void change_kata() {
         System.out.println("Choose kata:");
         System.out.println("5-Five \n6-Six \n7-Seven\n8-Eigth");
         String pos = sc.nextLine();//try catch
@@ -205,5 +257,5 @@ public class Menu {
         } else {
             choose_five();
         }
-    }
+    }//*/
 }
