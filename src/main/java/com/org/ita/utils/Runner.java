@@ -1,12 +1,9 @@
 package com.org.ita.utils;
 
-/*import com.org.ita.kata.Eight;
-import com.org.ita.kata.Five;
-import com.org.ita.kata.Seven;
-import com.org.ita.kata.Six;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Arrays;
 
-import java.util.Scanner;
-*/
 public class Runner {
 
     private final ConsoleScanner cs = new ConsoleScanner();
@@ -21,8 +18,9 @@ public class Runner {
     	System.out.println("¬вед≥ть float: ");
         float input = cs.readFloat();
         float result = user.getEigth().mpgToKPM(input);
-        System.out.println("Result: "+ result);
+        System.out.println("Result: " + result);
     }
+    
     public void runNbaCup() {
     	/*System.out.println("¬вед≥ть resultSheet: ");
     	String resultSheet = cs.readString();*/
@@ -54,9 +52,11 @@ public class Runner {
     	System.out.println("¬вед≥ть команду: ");
     	String toFind = cs.readString();
     	String result = user.getSix().nbaCup(resultSheet, toFind);
-    	System.out.println(result);
+    	
+    	System.out.println("Result: " + result);
     	
     }
+    
     public void runBalance() {
     	System.out.println("Use default template or your own?\n 1- own 2- default");
     	String choice = cs.readLine();
@@ -69,7 +69,179 @@ public class Runner {
     	 
     	String result = user.getSix().balance(b1);
     	
-    	System.out.println(result);
+    	System.out.println("Result: " + result);
     	
+    }
+    public void runAmIWilson() {
+    	System.out.println("Enter double number: ");
+    	double input = cs.readDouble();
+    	boolean result = user.getEigth().amIWilson(input);
+    	System.out.println("Result: " + result);
+    }
+    
+    public void runF() {
+    	System.out.println("Enter double number: ");
+    	double input = cs.readDouble();
+    	double result = user.getSix().f(input);
+    	System.out.println("Result: " + result);
+    }
+    
+    public void runSolveSum() {
+    	System.out.println("Enter double number: ");
+    	double input = cs.readDouble();
+    	double result = user.getFive().solveSum(input);
+    	System.out.println(result);
+    	System.out.println("Result: " + result);
+    }
+    
+    public void runSeriesSum() {
+        System.out.println("Input n: ");
+        int input = cs.readInt();
+        String result = user.getSeven().seriesSum(input);
+        System.out.println("Result: " + result);
+    }
+
+    public void runArtificialRain() {
+        System.out.println("Input array of int v: ");
+        int[] input = cs.readArrayInt();
+        int result = user.getFive().artificialRain(input);
+        System.out.println("Result: " + result);
+    }
+    
+    public void runSquareOrSquareRoot() {
+        int[] input = cs.readArrayInt();
+        int[] result = user.getEigth().squareOrSquareRoot(input);
+        System.out.println("Result: " + Arrays.toString(result));
+    }
+
+    public void runWhereIsHe() {
+        System.out.println("Enter number of people in queue:");
+        int p = cs.readInt();
+        System.out.println("Enter number of people before Vasya:");
+        int bef = cs.readInt();
+        System.out.println("Enter number of people after Vasya:");
+        int aft = cs.readInt();
+        int result = user.getSeven().whereIsHe(p, bef, aft);
+        System.out.println("Result: " + result);
+    }
+
+    public void runGap() {
+        System.out.println("Enter gap:");
+        int g = cs.readInt();
+        System.out.println("Enter start:");
+        long m = cs.readLong();
+        System.out.println("Enter end:");
+        long n = cs.readLong();
+        long[] result = user.getFive().gap(g,m,n);
+        System.out.println("Result: " + Arrays.toString(result));
+        
+    }
+ 
+    public void runFindNB() {
+        System.out.println("Enter long: ");
+        long input = cs.readLong();
+        long result = user.getSix().findNb(input);
+        System.out.println("Result: "+ result);
+    }
+
+    public void runZeros() {
+        System.out.println("Enter int: ");
+        int input = cs.readInt();
+        int result = user.getFive().zeros(input);
+        System.out.println("Result: "+ result);
+    }
+
+    public void runCountPositivesSumNegatives() {
+        System.out.println("Enter int[] array: ");
+        int[] input = cs.readArrayInt();
+        int[] result = user.getEigth().countPositivesSumNegatives(input);
+        System.out.println("Result: "+ Arrays.toString(result));
+    }
+    public void runKeepHydrated() {
+        System.out.println("Input double: ");
+        double input = cs.readDouble();
+        int result = user.getEigth().liters(input);
+        System.out.println("Result: "+ result);
+    }
+
+    public void runDivisibleBy() {
+        System.out.println("Input array of integers: ");
+        int[] inputArray = cs.readArrayInt();
+        System.out.println("Input divider: ");
+        int divider = cs.readInt();
+        int[] result = user.getEigth().divisibleBy(inputArray, divider);
+        System.out.println("Result: "+ Arrays.toString(result));
+    }
+    
+    public void runTwoDecimalPlaces(){
+        System.out.println("Write double: ");
+        double input=cs.readDouble();
+        double result=user.getEigth().twoDecimalPlaces(input);
+        System.out.println("Result: "+ result);
+    }
+    
+    public void runRainfall(){
+        System.out.println("Write town 1: ");
+        String town1= cs.readLine();
+        System.out.println("Write strng 1: ");
+        String strng1= cs.readLine();
+        System.out.println("Write town 2: ");
+        String town2= cs.readLine();
+        System.out.println("Write strng 2: ");
+        String strng2= cs.readLine();
+        double resultMean=user.getSix().mean(town1,strng1);
+        double resultVariance=user.getSix().variance(town2,strng2);
+        System.out.println("Result mean: "+ resultMean);
+        System.out.println("Result: "+ resultVariance);
+    }
+    
+    public void runSmallest(){
+        System.out.println("Write n:");
+        long n= cs.readInt();
+        long[] result=user.getFive().smallest(n);
+        System.out.println(Arrays.toString(result));
+    }
+    
+    public void runConvertAStringToANumber(){
+        System.out.println("Enter the string:");
+        String input = cs.readString();
+        int res = user.getEigth().stringToNumber(input);
+        System.out.println("Result" + res);
+    }
+    
+    public void runPerimeter(){
+        System.out.println("Enter perimeters:");
+        BigInteger input = cs.readBigInteger();
+        BigInteger res = user.getFive().perimeter(input);
+        System.out.println("Result" + res);
+    }
+    
+    public void runVolumeOfCuboid() {
+        System.out.println("Enter length:");
+        double length = cs.readDouble();
+        System.out.println("Enter width:");
+        double width = cs.readDouble();
+        System.out.println("Enter height:");
+        double height = cs.readDouble();
+        double result = user.getEigth().getVolumeOfCuboid(length, width, height);
+        System.out.println("Result: " + Double.toString(result));
+    }
+
+    public void runLookingForABenefactor(){
+        System.out.println("Enter array:");
+        double[] arr = cs.readArrayDouble(); 
+        System.out.println("Enter double:");
+        double navg = cs.readDouble();
+        double result = user.getSeven().newAvg(arr, navg);
+        System.out.println("Result:" +result);
+    }
+
+    public void runHelpTheBookseller(){
+        System.out.println("Enter string array:");
+        String[] lstOfArt=cs.readArrayString();
+        System.out.println("Enter string array:");
+        String[] lstOf1stLetter = cs.readArrayString();
+        String result = user.getSix().stockSummary(lstOfArt, lstOf1stLetter);
+        System.out.println("Result:" +result);
     }
 }
