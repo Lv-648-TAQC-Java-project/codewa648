@@ -1,20 +1,30 @@
-package com.org.ita;
-
-import com.org.ita.kata.Eight;
-import com.org.ita.kata.Five;
-import com.org.ita.kata.Seven;
-import com.org.ita.kata.Six;
+package com.org.ita.utils;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
-    static Five impl_five;
-    static Six impl_six;
-    static Seven impl_seven;
-    static Eight impl_eigth;
-    static boolean not_null = false;
-    Scanner sc;
+
+    private ConsoleScanner cs;
+    private Users user;
+    private Runner runner;
+
+    public Menu() {
+        cs = new ConsoleScanner();
+        runner = new Runner();
+        chooseImpl();
+    }
+
+    private void chooseImpl(){
+        Users.printAllUserName();
+        System.out.println("Choose id of implementation:");
+        long userId = cs.readLong();
+        user = Users.getById(userId);
+    }
+
+    public void listCommands() {
+        System.out.println("1-Show users\n2-Set user\n3-Show tasks");
+    }
 
     public void run() {
         sc = new Scanner(System.in);
