@@ -10,7 +10,21 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        BigInteger first = new BigInteger("" + m);
+        BigInteger last = first.nextProbablePrime();
+        if (!first.isProbablePrime(1)){
+            first = last;
+        }
+        long i = 0, j = 0;
+        while (j <= n) {
+            j = last.longValue();
+            i = first.longValue();
+            if (j - i == g)
+                return new long[] {i, j};
+            first = last;
+            last = first.nextProbablePrime();
+        }
+        return null;
     }
 
     @Override
