@@ -1,209 +1,249 @@
 package com.org.ita.utils;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class Menu {
 
     private ConsoleScanner cs;
     private Users user;
     private Runner runner;
-
+    private final Viewer view = new Viewer();
     public Menu() {
-        cs = new ConsoleScanner();
+        
+    }
+    public void run() {
+    	cs = new ConsoleScanner();
         runner = new Runner();
         chooseImpl();
     }
 
     private void chooseImpl(){
         Users.printAllUserName();
-        System.out.println("Choose id of implementation:");
-        long userId = cs.readLong();
-        user = Users.getById(userId);
+        //System.out.println("Choose id of implementation or type 0 for exit");
+        view.chooseId("implementation", "");
+        int userId = cs.readInt();
+        
+        switch(userId) {
+            case 0: System.exit(0);
+            case 1:
+            case 2: 
+            case 3:
+            case 4:
+            case 5: 
+            case 6:
+            case 7:
+            case 8: 
+            	user = Users.getById(userId);
+            	runner.setUserImpl(user);
+            	chooseKata();
+            default:
+            	view.inputError();
+                chooseImpl();
+        }
+       
     }
 
     public void listCommands() {
         System.out.println("1-Show users\n2-Set user\n3-Show tasks");
     }
 
-    public void run() {
-        sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("Choose implementation:");
-            System.out.println("1-andrij66 \n2-AndriyBarskyi");
-            String pos = sc.nextLine();//try catch
-            boolean exit = false;
-            switch (pos) {
-                case "0":
-                    exit = true;
-                    break;
-                case "1":
-                    impl_five = new com.org.ita.kata.implementation.andriy66.Five();
-                    impl_six = new com.org.ita.kata.implementation.andriy66.Six();
-                    impl_seven = new com.org.ita.kata.implementation.andriy66.Seven();
-                    impl_eigth = new com.org.ita.kata.implementation.andriy66.Eigth();
-                    not_null = true;
-                    break;
-                case "2":
-                    impl_five = new com.org.ita.kata.implementation.AndriyBarskyi.Five();
-                    impl_six = new com.org.ita.kata.implementation.AndriyBarskyi.Six();
-                    impl_seven = new com.org.ita.kata.implementation.AndriyBarskyi.Seven();
-                    impl_eigth = new com.org.ita.kata.implementation.AndriyBarskyi.Eigth();
-                    not_null = true;
-                    break;
-                default:
-                    System.err.println("Wrong input!");
-                    break;
-            }
-            if (exit) {
+    
+    private void chooseKata() {
+    	/*System.out.println("Choose kata or type 0 to return on previous level");
+        System.out.println("5 - Five \n6 - Six \n7 - Seven\n8 - Eigth");*/
+    	view.chooseId("kata", "on previous level");
+        int kata = cs.readInt();
+        
+        switch (kata) {
+            case 0:
+            	chooseImpl();
                 break;
-            }
-            if (not_null) {
-                change_kata();
-            }
+                
+            case 5: 
+                chooseFive();
+                break;
+            
+            case 6:
+                chooseSix();
+                break;
+                
+            case 7: 
+                chooseSeven();
+                break;
+      
+            case 8:
+                chooseEight();
+                break;
+            
+            default:
+                view.inputError();
+                chooseKata();
+                break;
         }
+        chooseKata();
     }
-
-    private void change_kata() {
-        System.out.println("Choose kata:");
-        System.out.println("5-Five \n6-Six \n7-Seven\n8-Eigth");
-        String pos = sc.nextLine();//try catch
-        boolean exit = false;
-        int pos1 = 0;
-        switch (pos) {
-            case "0":
-                exit = true;
+    public void chooseEight() {
+    	System.out.println("Choose task to run or type 0 to return on previous level: ");
+        System.out.println(""
+        		+ "1 - KeepHydrated\n"
+        		+ "2 - VolumeOfCuboid\n"
+        		+ "3 - MpgToKpm\n"
+        		+ "4 - SquareOrSquareRoot\n"
+        		+ "5 - CountPositivesSumNegatives\n"
+        		+ "6 - ConvertAStringToANumber\n"
+        		+ "7 - AmIWilson\n"
+        		+ "8 - TwoDecimalPlaces\n"
+        		+ "9 - DivisibleBy\n");
+        int task = cs.readInt();
+        
+        
+        switch (task) {
+            case 0:
+            	chooseKata();
                 break;
-            case "5":
-                choose_five();
+            case 1:
+            	runner.runKeepHydrated();
+            	break;
+            case 2:
+            	runner.runVolumeOfCuboid();
+            	break;
+            case 3:
+                runner.runMpgToKpm();
                 break;
-            case "6":
-                choose_six();
+            case 4:
+                runner.runSquareOrSquareRoot();
                 break;
-            case "7":
-                choose_seven();
+            case 5:
+                runner.runCountPositivesSumNegatives();
+                break;   
+            case 6:
+                runner.runConvertAStringToANumber();
+                break;   
+            case 7:
+                runner.runAmIWilson();
                 break;
-            case "8":
-                choose_eigth();
+            case 8:
+                runner.runTwoDecimalPlaces();
+                break; 
+            case 9:
+                runner.runDivisibleBy();
+                break; 
+            default:
+            	view.inputError();
+                chooseEight();
+                break;
+        }
+        chooseEight();
+    }
+    public void chooseSeven() {
+    	System.out.println("Choose task to run or type 0 to return on previous level: ");
+    	System.out.println(""
+    			+ "1 - LookingForABenefactor\n"
+        		+ "2 - SeriesSum\n"
+        		+ "3 - WhereIsHe\n");
+        
+    	int task = cs.readInt();
+       
+        switch (task) {
+            case 0:
+            	chooseKata();
+                break;
+            case 1:
+                runner.runLookingForABenefactor();
+                break;   
+            case 2:
+                runner.runSeriesSum();
+                break;
+            case 3:
+                runner.runWhereIsHe();
+                break;
+            
+            default:
+            	view.inputError();
+                chooseSeven();
+                break;
+        }
+        chooseSeven();
+    }
+    
+    public void chooseSix() {
+    	System.out.println("Choose task to run or type 0 to return on previous level: ");
+    	System.out.println(""
+    			+ "1 - FindNB\n"
+        		+ "2 - Balance\n"
+        		+ "3 - F\n"
+        		+ "4 - Rainfall\n"
+        		+ "5 - NbaCup\n"
+        		+ "6 - HelpTheBookseller\n");
+        int task = cs.readInt();
+        
+        switch (task) {
+            case 0:
+            	chooseKata();
+                break;
+            case 1:
+                runner.runFindNB();
+                break;   
+            case 2:
+                runner.runBalance();
+                break;
+            case 3:
+                runner.runF();
+                break;
+            case 4:
+                runner.runRainfall();
+                break; 
+            case 5:
+                runner.runNbaCup();
+                break;
+            case 6:
+                runner.runHelpTheBookseller();
                 break;
             default:
-                System.err.println("Wrong input!");
+            	view.inputError();
+                chooseSix();
                 break;
         }
-        if (!exit) {
-            change_kata();
-        }
+        chooseSix();
     }
-
-    private void choose_five() {
-        System.out.println("Choose task to run:");
-        System.out.println("1-artificialRain \n2-gap");
-        String pos = sc.nextLine();
-        String result = "";
-        boolean exit = false;
-        switch (pos) {
-            case "0":
-                exit = true;
+    
+    public void chooseFive() {
+    	System.out.println("Choose task to run or type 0 to return on previous level: ");
+    	System.out.println(""
+    			+ "1 - ArtificialRain\n"
+        		+ "2 - Gap\n"
+        		+ "3 - Zeros\n"
+        		+ "4 - Perimeter\n"
+        		+ "5 - SolveSum\n"
+        		+ "6 - Smallest\n");
+        int task = cs.readInt();
+       
+        switch (task) {
+            case 0:
+            	chooseKata();
                 break;
-            case "1":
-                result = "" + impl_five.artificialRain(new int[]{4, 2, 3, 3, 2});
+            case 1:
+                runner.runArtificialRain();
+                break;   
+            case 2:
+                runner.runGap();
                 break;
-            case "2":
-                result = Arrays.toString(impl_five.gap(4, 100, 110));
+            case 3:
+                runner.runZeros();
+                break;
+            case 4:
+                runner.runPerimeter();
+                break;
+            case 5:
+                runner.runSolveSum();
+                break;
+            case 6:
+                runner.runSmallest();
                 break;
             default:
-                System.err.println("Wrong input!");
+            	view.inputError();
+                chooseFive();
                 break;
         }
-        if (!exit && !result.equals("")) {
-            System.out.println("\nResult:\n" + result + "\n");
-            choose_five();
-        } else {
-            choose_five();
-        }
+        chooseFive();
     }
-
-    private void choose_six() {
-        System.out.println("Choose task to run:");
-        System.out.println("1-findNb \n2-f");
-        String pos = sc.nextLine();//try catch
-        String result = "";
-        boolean exit = false;
-        switch (pos) {
-            case "0":
-                exit = true;
-                break;
-            case "1":
-                result = "" + impl_six.findNb(1071225);
-                break;
-            case "2":
-                result = "" + impl_six.f(0.5);
-                break;
-            default:
-                System.err.println("Wrong input!");
-                break;
-        }
-        if (!exit && !result.equals("")) {
-            System.out.println("\nResult:\n" + result + "\n");
-            choose_six();
-        } else {
-            choose_five();
-        }
-    }
-
-    private void choose_seven() {
-        System.out.println("Choose task to run:");
-        System.out.println("1-newAvg \n2-seriesSum");
-        String pos = sc.nextLine();
-        String result = "";
-        boolean exit = false;
-        switch (pos) {
-            case "0":
-                exit = true;
-                break;
-            case "1":
-                result = "" + impl_seven.newAvg(new double[]{14.0, 30.0, 5.0, 7.0, 9.0, 11.0, 16.0}, 90);
-                break;
-            case "2":
-                result = impl_seven.seriesSum(4);
-                break;
-            default:
-                System.err.println("Wrong input!");
-                break;
-        }
-        if (!exit && !result.equals("")) {
-            System.out.println("\nResult:\n" + result + "\n");
-            choose_seven();
-        } else {
-            choose_five();
-        }
-    }
-
-    private void choose_eigth() {
-        System.out.println("Choose task to run:");
-        System.out.println("1-sqrt or Wrong input!t sqrt \n2-mpgToKPM");
-        String pos = sc.nextLine();
-        String result = "";
-        boolean exit = false;
-        switch (pos) {
-            case "0":
-                exit = true;
-                break;
-            case "1":
-                result = Arrays.toString(impl_eigth.squareOrSquareRoot(new int[]{4, 3, 9, 7, 2, 1}));
-                break;
-            case "2":
-                result = "" + impl_eigth.mpgToKPM(15);
-                break;
-            default:
-                System.err.println("Wrong input!");
-                break;
-        }
-        if (!exit && !result.equals("")) {
-            System.out.println("\nResult:\n" + result + "\n");
-            choose_eigth();
-        } else {
-            choose_five();
-        }
-    }
+  
 }
