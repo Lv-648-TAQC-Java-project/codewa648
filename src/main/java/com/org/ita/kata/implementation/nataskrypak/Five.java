@@ -42,6 +42,6 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+         return new long[0];
     }
 }
