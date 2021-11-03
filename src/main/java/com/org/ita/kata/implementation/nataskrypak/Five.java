@@ -37,7 +37,7 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public double solveSum(double m) {
-        return 0;
+            return 0;
     }
 
     @Override
