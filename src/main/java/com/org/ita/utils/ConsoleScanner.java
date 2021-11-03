@@ -10,69 +10,83 @@ import java.util.StringTokenizer;
 
 public class ConsoleScanner {
     private final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
-    private final Viewer view = new Viewer();
-    
-    public int readInt(){
+    private Viewer view;
+
+    public ConsoleScanner(Viewer view) {
+        this.view = view;
+    }
+
+    public int readInt() {
         int input = -1;
         try {
             input = sc.nextInt();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             sc.next();
             view.inputError();
+            return readInt();
         }
         return input;
     }
-    public long readLong(){
+
+    public long readLong() {
         long input = -1;
         try {
             input = sc.nextLong();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             sc.next();
             view.inputError();
+            return readLong();
         }
         return input;
     }
-    public float readFloat(){
+
+    public float readFloat() {
         float input = -1.0f;
         try {
             input = sc.nextFloat();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             sc.next();
             view.inputError();
+            return readFloat();
         }
         return input;
     }
-    public double readDouble(){
+
+    public double readDouble() {
         double input = -1.0;
         try {
             input = sc.nextDouble();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             sc.next();
             view.inputError();
+            return readDouble();
         }
         return input;
     }
-    public String readString(){
-    	String input = "";
+
+    public String readString() {
+        String input = "";
         String temp;
-        while(true){
-            input+=sc.nextLine();
+        while (true) {
+            input += sc.nextLine();
             System.out.println("Do you want to add new line? 0-no any-yes");
             temp = sc.nextLine();
-            if(temp.equals("0")){
+            if (temp.equals("0")) {
                 break;
-            }else{
-                input+="\n";
+            } else {
+                input += "\n";
             }
         }
-    	return input;
+        return input;
 
     }
-    public String readLine(){
+
+    public String readLine() {
         String input = "";
         input = sc.nextLine();
         return input;
     }
+
     public BigInteger readBigInteger() {
         BigInteger input = BigInteger.valueOf(-1);
         try {
@@ -80,6 +94,7 @@ public class ConsoleScanner {
         } catch (InputMismatchException e) {
             sc.next();
             view.inputError();
+            return  readBigInteger();
         }
         return input;
     }
@@ -104,7 +119,8 @@ public class ConsoleScanner {
                 output[i] = Integer.parseInt(st.nextToken());
             }
         } catch (InputMismatchException e) {
-        	view.inputError();
+            view.inputError();
+            return readArrayInt();
         }
         return output;
     }
@@ -118,7 +134,8 @@ public class ConsoleScanner {
                 output[i] = Double.parseDouble(st.nextToken());
             }
         } catch (InputMismatchException e) {
-        	view.inputError();
+            view.inputError();
+            return readArrayDouble();
         }
         return output;
     }
@@ -132,5 +149,5 @@ public class ConsoleScanner {
         }
         return output;
     }
-    
+
 }
