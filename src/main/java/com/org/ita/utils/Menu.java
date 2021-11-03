@@ -5,7 +5,7 @@ public class Menu {
     private ConsoleScanner cs;
     private Users user;
     private Runner runner;
-
+    private final Viewer view = new Viewer();
     public Menu() {
         
     }
@@ -17,7 +17,8 @@ public class Menu {
 
     private void chooseImpl(){
         Users.printAllUserName();
-        System.out.println("Choose id of implementation or type 0 for exit");
+        //System.out.println("Choose id of implementation or type 0 for exit");
+        view.chooseId("implementation", "");
         int userId = cs.readInt();
         
         switch(userId) {
@@ -34,7 +35,7 @@ public class Menu {
             	runner.setUserImpl(user);
             	chooseKata();
             default:
-            	System.err.println("Wrong input!\n");
+            	view.inputError();
                 chooseImpl();
         }
        
@@ -46,8 +47,9 @@ public class Menu {
 
     
     private void chooseKata() {
-    	System.out.println("Choose kata or type 0 to return on previous level");
-        System.out.println("5 - Five \n6 - Six \n7 - Seven\n8 - Eigth");
+    	/*System.out.println("Choose kata or type 0 to return on previous level");
+        System.out.println("5 - Five \n6 - Six \n7 - Seven\n8 - Eigth");*/
+    	view.chooseId("kata", "on previous level");
         int kata = cs.readInt();
         
         switch (kata) {
@@ -72,7 +74,7 @@ public class Menu {
                 break;
             
             default:
-                System.err.println("Wrong input!");
+                view.inputError();
                 chooseKata();
                 break;
         }
@@ -125,7 +127,7 @@ public class Menu {
                 runner.runDivisibleBy();
                 break; 
             default:
-                System.err.println("Wrong input!");
+            	view.inputError();
                 chooseEight();
                 break;
         }
@@ -155,7 +157,7 @@ public class Menu {
                 break;
             
             default:
-                System.err.println("Wrong input!");
+            	view.inputError();
                 chooseSeven();
                 break;
         }
@@ -196,7 +198,7 @@ public class Menu {
                 runner.runHelpTheBookseller();
                 break;
             default:
-                System.err.println("Wrong input!");
+            	view.inputError();
                 chooseSix();
                 break;
         }
@@ -237,7 +239,7 @@ public class Menu {
                 runner.runSmallest();
                 break;
             default:
-                System.err.println("Wrong input!");
+            	view.inputError();
                 chooseFive();
                 break;
         }

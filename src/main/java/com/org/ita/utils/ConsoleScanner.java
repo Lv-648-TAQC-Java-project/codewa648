@@ -3,19 +3,22 @@ package com.org.ita.utils;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class ConsoleScanner {
-    private final Scanner sc = new Scanner(System.in) ;
 
+public class ConsoleScanner {
+    private final Scanner sc = new Scanner(System.in).useLocale(Locale.US);
+    private final Viewer view = new Viewer();
+    
     public int readInt(){
         int input = -1;
         try {
             input = sc.nextInt();
         } catch (InputMismatchException e){
             sc.next();
-            System.err.println("Wrong input!");
+            view.inputError();
         }
         return input;
     }
@@ -25,7 +28,7 @@ public class ConsoleScanner {
             input = sc.nextLong();
         } catch (InputMismatchException e){
             sc.next();
-            System.err.println("Wrong input!");
+            view.inputError();
         }
         return input;
     }
@@ -35,7 +38,7 @@ public class ConsoleScanner {
             input = sc.nextFloat();
         } catch (InputMismatchException e){
             sc.next();
-            System.err.println("Wrong input!");
+            view.inputError();
         }
         return input;
     }
@@ -45,7 +48,7 @@ public class ConsoleScanner {
             input = sc.nextDouble();
         } catch (InputMismatchException e){
             sc.next();
-            System.err.println("Wrong input!");
+            view.inputError();
         }
         return input;
     }
@@ -76,7 +79,7 @@ public class ConsoleScanner {
             input = sc.nextBigInteger();
         } catch (InputMismatchException e) {
             sc.next();
-            System.err.println("Wrong input!");
+            view.inputError();
         }
         return input;
     }
@@ -87,7 +90,7 @@ public class ConsoleScanner {
             input = sc.nextBigDecimal();
         } catch (InputMismatchException e) {
             sc.next();
-            System.err.println("Wrong input!");
+            view.inputError();
         }
         return input;
     }
@@ -101,7 +104,7 @@ public class ConsoleScanner {
                 output[i] = Integer.parseInt(st.nextToken());
             }
         } catch (InputMismatchException e) {
-            System.err.println("Wrong input!");
+        	view.inputError();
         }
         return output;
     }
@@ -115,7 +118,7 @@ public class ConsoleScanner {
                 output[i] = Double.parseDouble(st.nextToken());
             }
         } catch (InputMismatchException e) {
-            System.err.println("Wrong input!");
+        	view.inputError();
         }
         return output;
     }

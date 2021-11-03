@@ -1,6 +1,5 @@
 package com.org.ita.utils;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
@@ -9,16 +8,21 @@ public class Runner {
     private final ConsoleScanner cs = new ConsoleScanner();
 
     private Users user;
-
+    private Task currentTask;
+    private Viewer view = new Viewer();
+    
+    
     void setUserImpl(Users user) {
         this.user = user;
     }
 
     public void runMpgToKpm() {
-    	System.out.println("¬вед≥ть float: ");
+    	currentTask = Task.TASK_8_3;
+    	System.out.print(currentTask.getDescription());
+    	view.input("float" , currentTask.getInputMessages()[0]);
         float input = cs.readFloat();
         float result = user.getEigth().mpgToKPM(input);
-        System.out.println("Result: " + result);
+        System.out.println(currentTask.getResultMessages()[0] + result);
     }
     
     public void runNbaCup() {
@@ -90,7 +94,6 @@ public class Runner {
     	System.out.println("Enter double number: ");
     	double input = cs.readDouble();
     	double result = user.getFive().solveSum(input);
-    	System.out.println(result);
     	System.out.println("Result: " + result);
     }
     
