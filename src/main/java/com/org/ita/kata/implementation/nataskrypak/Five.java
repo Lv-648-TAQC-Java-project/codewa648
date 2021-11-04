@@ -42,6 +42,26 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-         return new long[0];
+        String stringedNumber = n + "";
+        long smallestNumber = n;
+        int numberLength = stringedNumber.length();
+        long[] result = new long[3];
+
+        for (int i = 0; i < numberLength; i++){
+            for (int j = 0; j < numberLength; j++){
+                StringBuilder numberSB = new StringBuilder(stringedNumber);
+                char digit = numberSB.charAt(i);
+                numberSB.deleteCharAt(i);
+                numberSB.insert(j, digit);
+                long currentNumber = Long.parseLong(numberSB.toString());
+                if(currentNumber < smallestNumber){
+                    smallestNumber = currentNumber;
+                    result[0] = smallestNumber;
+                    result[1] = i;
+                    result[2] = j;
+                }
+            }
+        }
+        return result;
     }
 }
