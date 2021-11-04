@@ -99,6 +99,15 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        String str = "" + n;
+        long[] smallest = new long[]{Long.MAX_VALUE, 0, 0};
+        for (int i = str.length() - 1; i >= 0; i--) {
+            final String s1 = str.substring(0, i) + str.substring(i + 1);
+            for (int j = str.length() - 1; j >= 0; j--) {
+                long tmp = Long.parseLong(s1.substring(0, j) + str.charAt(i) + s1.substring(j));
+                if (tmp <= smallest[0]) smallest = new long[]{tmp, i, j};
+            }
+        }
+        return smallest;
     }
 }
