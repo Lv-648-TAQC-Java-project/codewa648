@@ -74,10 +74,21 @@ public class Eigth implements Eight {
   	//---------------------------------------------------------------------------------------------------------------------------------------------
 
 
+    //We need a function that can transform a string into a number
     @Override
-    public int stringToNumber(String str) {
-        return 0;
+    public int stringToNumber(String str) throws NumberFormatException {
+    	int numberFromString = 0;
+  	   	try {
+  	   		numberFromString = Integer.parseInt(str);
+  	   	}
+  	    catch(NumberFormatException e) {
+  	       System.out.println(e.getMessage());
+  	    }
+  	    return numberFromString;
     }
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     @Override
     public boolean amIWilson(double n) {
