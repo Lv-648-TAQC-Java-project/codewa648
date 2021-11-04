@@ -19,28 +19,28 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
-        String res = "";
-        String endLine = "\\r\\n";
-        String cleanBook = book.replaceAll("[^a-zA-Z0-9. \n]", "").replaceAll(" +", " ");
-        String[] separatedBook = cleanBook.split("\n");
-        float allMoney = Float.parseFloat(separatedBook[0]);
-        float moneyLeft = allMoney;
-        res += "Original Balance: " + String.format("%.2f", allMoney) + endLine;
-        float[] expenses = new float[separatedBook.length - 1];
-        for (int i = 1; i < separatedBook.length; i++) {
-            String[] bookEntry = separatedBook[i].split(" ");
-            expenses[i - 1] = Float.parseFloat(bookEntry[2]);
-            moneyLeft -= expenses[i - 1];
-            res += bookEntry[0] + " " + bookEntry[1] + " " + bookEntry[2] + " Balance " + String.format("%.2f", moneyLeft) + endLine;
+        String t = book.replaceAll("([^\\n. \\da-zA-Z])", "");
+        String[] arr = t.split("[\\n]+");
+        double current = Double.parseDouble(arr[0]);
+        double total = 0;
+        int count = 0;
+        StringBuilder result = new StringBuilder();
+        result.append("Original Balance: " + arr[0]);
+        for (int i = 1; i < arr.length; i++) {
+            count++;
+            String[] line = arr[i].split("[ ]+");
+            current -= Double.parseDouble(line[2]);
+            total += Double.parseDouble(line[2]);
+            String u = String.format("\\r\\n%s %s %s Balance %.2f", line[0], line[1], line[2], current);
+            result.append(u);
         }
-        res += "Total expense  " + String.format("%.2f", (allMoney - moneyLeft)) + endLine;
-        res += "Average expense  " + String.format("%.2f", (allMoney - moneyLeft) / (separatedBook.length - 1));
-        return res;
+        result.append(String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total, total / count));
+        return result.toString();
     }
 
     @Override
     public double f(double x) {
-        return 0;
+        return x/(Math.sqrt(1 + x) + 1);
     }
 
     @Override
