@@ -13,7 +13,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double f(double x) {
-        return 0;
+        return x / 2.0 - Math.pow(x, 2) / 8.0 + Math.pow(x, 3) / 16.0 - 5.0 * Math.pow(x, 4) / 128.0 + 7.0 * Math.pow(x, 5) / 256.0;
     }
 
     @Override
