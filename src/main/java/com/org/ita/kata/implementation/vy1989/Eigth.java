@@ -18,10 +18,14 @@ public class Eigth implements Eight {
   	//---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    @Override
-    public float mpgToKPM(float mpg) {
-        return 0;
-    }
+    //Create an application that will display the number of kilometers per liter (output) based on the number of miles per imperial gallon (input).
+  	@Override
+      public float mpgToKPM(float mpg) {
+          return Float.parseFloat(String.format("%.2f",mpg * 1.609344f / 4.54609188f)); //kilometers divided into liters
+      }
+  	
+  	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     //Write a method, that will get an integer array as parameter and will process every number from this array.
   	@Override
