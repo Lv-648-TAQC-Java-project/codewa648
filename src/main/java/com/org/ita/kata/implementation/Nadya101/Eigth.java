@@ -7,7 +7,11 @@ import java.util.ArrayList;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        if(time>0){
+            return (int)(time*0.5);
+        }else{
+            return -1;
+        }
     }
 
     @Override
