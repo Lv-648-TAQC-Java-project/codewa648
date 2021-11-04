@@ -10,9 +10,8 @@ public class Eigth implements Eight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
-
     @Override
     public float mpgToKPM(float mpg) {
         return (float) Math.round(mpg * 1.609344 / 4.54609188 * 100) / 100;
