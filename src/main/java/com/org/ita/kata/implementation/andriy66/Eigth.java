@@ -66,9 +66,7 @@ public class Eigth implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        double scale = Math.pow(10, 2);
-        double result = Math.ceil(number * scale) / scale;
-        return result;
+        return (Math.round(number*100))/100.0;
     }
 
     @Override
