@@ -68,13 +68,12 @@ public class Six implements com.org.ita.kata.Six {
 	    return bookBuilder.toString();
     }
     
-    //------------------------------------------------------------------------------------------------------------------------------------------
-    
     @Override
     public double f(double x) {
-        return 0;
+    	return x/(Math.sqrt(1 + x) + 1);
     }
     
+
     /*function: mean(town, strng) should return the average of rainfall for the city town and the strng data or data1.
       function: variance(town, strng) should return the variance of rainfall for the city town and the strng data or data1.*/
     private String getRow(String town, String[] dataRows, StringBuilder dataRow) {
@@ -94,6 +93,7 @@ public class Six implements com.org.ita.kata.Six {
 		
 	    return dataRow.toString();	
 	}
+
     @Override
     public double mean(String town, String strng) {
     	double valuesSum = 0;
