@@ -175,6 +175,19 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) return "";
+        int[] sum = new int[lstOf1stLetter.length];
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
+            for (String j: lstOfArt) {
+                if (j.startsWith(lstOf1stLetter[i])) {
+                    sum[i] += Integer.parseInt(j.split(" ")[1]);
+                }
+            }
+        }
+        String result = "(" + lstOf1stLetter[0] + " : " + sum[0] + ")";
+        for (int i = 1; i < lstOf1stLetter.length; i++) {
+            result += " - (" + lstOf1stLetter[i] + " : " + sum[i] + ")";
+        }
+        return result;
     }
 }
