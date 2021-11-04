@@ -1,16 +1,21 @@
 package com.org.ita.kata.implementation.vy1989;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.math.BigDecimal;
 
 import com.org.ita.kata.Eight;
 
 public class Eigth implements Eight {
-    @Override
-    public int liters(double time) {
-        return 0;
-    }
+	
+	//You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+	@Override
+	public int liters(double time) {
+	    return time > 0 ? (int) ((int)time * 0.5) : 0;
+	}
+		
+	//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
     //Bob needs a fast way to calculate the volume of a cuboid with three values: 
   	//length, width and the height of the cuboid. Write a function to help Bob with this calculation.
