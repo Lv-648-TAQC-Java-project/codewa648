@@ -56,7 +56,7 @@ public class Eigth implements Eight {
         if(n==0 || n==1){
             return false;
         }
-        else if(n==5 || n==563){
+        else if(n==5 || n==563 ||n==13){
             return true;
         }
         else {
