@@ -7,12 +7,12 @@ import java.util.Arrays;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) Math.floor(time*0.5);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length*width*height;
     }
 
     @Override
