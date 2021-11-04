@@ -81,14 +81,13 @@ public class Five implements com.org.ita.kata.Five {
         return specifiedGapPrimesArray;
     }
     
-    //------------------------------------------------------------------------------------------------------
     @Override
     public int zeros(int n) {
-        return 0;
+    	int zeros = 0;
+		for(int i = n; i>0; i/=5,zeros+=i);
+		return zeros;
     }
     
-    /*Could you give the sum of the perimeters of all the squares in a rectangle when there are n + 1 
-     * squares disposed in the same manner as in the drawing*/
     @Override
     public BigInteger perimeter(BigInteger n) {
     	BigInteger previous = BigInteger.valueOf(1);
