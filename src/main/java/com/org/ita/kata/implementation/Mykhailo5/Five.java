@@ -63,6 +63,24 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-        return new long[0];
+        long[] arr = new long[3];
+        long min = n;
+        String str = n + "";
+        for (int i = 0; i < str.length(); i++) {
+            for (int x = 0; x < str.length(); x++) {
+                StringBuilder stringBuilder = new StringBuilder(str);
+                char ch = stringBuilder.charAt(i);
+                stringBuilder.deleteCharAt(i);
+                stringBuilder.insert(x, ch);
+                long num = Long.parseLong(stringBuilder.toString());
+                if (num < min) {
+                    min = num;
+                    arr[0] = min;
+                    arr[1] = i;
+                    arr[2] = x;
+                }
+            }
+        }
+        return arr;
     }
 }
