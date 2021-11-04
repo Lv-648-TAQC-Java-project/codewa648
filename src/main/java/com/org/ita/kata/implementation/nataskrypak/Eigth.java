@@ -5,9 +5,8 @@ import com.org.ita.kata.Eight;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
-        return 0;
+        return (int) Math.floor(time / 2);
     }
-
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
         return length * width * height;
