@@ -47,9 +47,21 @@ public class EigthTest extends DataProviderUserImplementation {
 	throw new RuntimeException("Test not implemented");
     }
 
-    @Test
-    public void litersTest() {
-	throw new RuntimeException("Test not implemented");
+    @DataProvider
+    public Object[][] litersDataProvider() {
+        Object[][] param = new Object[][] {
+                { 0, 0 },
+                { -1, 0 },
+                { -4, 0 },
+                { 4, 2 },
+                { 11, 5 }
+        };
+        return combine(implementationsEightKataDataProvider(), param);
+    }
+
+    @Test(dataProvider = "litersDataProvider")
+    public void litersTest(Eight eight, int time, int expected) {
+        Assert.assertEquals(eight.liters(time), expected);
     }
 
     @Test
