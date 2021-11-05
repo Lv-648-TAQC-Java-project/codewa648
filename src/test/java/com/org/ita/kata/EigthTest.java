@@ -25,9 +25,31 @@ public class EigthTest extends DataProviderUserImplementation {
     }
 
     @Test(dataProvider = "wilsonPrimeValidData")
-    public void amIWilsonValidTest( double data) {
-	//boolean actualResult = eight.amIWilson(data);
-	//Assert.assertTrue(actualResult);
+    public void amIWilsonValidTest(Eight eight, double data) {
+	boolean actualResult = eight.amIWilson(data);
+	Assert.assertTrue(actualResult);
+    }
+    /* private static final double delta = 0.0001;
+  
+  @Test
+  public void examples() {
+      // assertEquals("expected", "actual");
+      assertEquals(4, Kata.getVolumeOfCuboid(1, 2, 2), delta);
+      assertEquals(63, Kata.getVolumeOfCuboid(6.3, 2, 5), delta);
+  }*/
+    @DataProvider
+    public Object[][] volumeOfCuboidDataProvider() {
+	Object[][] param =  new Object[][] { 
+	    { 1,2,2,4 }, 
+	    { 6.3,2,5, 63 } 
+	    
+	};
+	return combine(implementationsEightKataDataProvider(),param);
+    }
+    @Test(dataProvider="volumeOfCuboidDataProvider") 
+    public void getVolumeOfCuboidTest(Eight eight, double a, double b, double c, double expected) { 
+	
+	Assert.assertEquals(eight.getVolumeOfCuboid(a, b, c), expected);
     }
 
     /*

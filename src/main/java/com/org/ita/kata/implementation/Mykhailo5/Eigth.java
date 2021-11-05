@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
-        return (int) Math.floor(time*0,5);
+        return (int) Math.floor(time*0.5);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Eigth implements Eight {
         if(n==0 || n==1){
             return false;
         }
-        else if(n==5 || n==563){
+        else if(n ==13 || n==5 || n==563){
             return true;
         }
         else {
