@@ -1,4 +1,6 @@
-package com.org.ita.utils;
+package com.org.ita.kata;
+
+import com.org.ita.utils.Menu;
 
 public class main {
     public static void main(String[] args) {
