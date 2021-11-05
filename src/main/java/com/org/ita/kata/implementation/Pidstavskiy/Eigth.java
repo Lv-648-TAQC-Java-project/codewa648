@@ -9,8 +9,8 @@ public class Eigth implements Eight {
     }
 
     @Override
-    public double getVolumeOfCuboid(double length, double width, double height)git  {
-        return 0;
+    public double getVolumeOfCuboid(double length, double width, double height) {
+        return length*width*height;
     }
 
     @Override
