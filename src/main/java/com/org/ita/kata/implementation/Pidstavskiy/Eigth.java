@@ -9,13 +9,16 @@ public class Eigth implements Eight {
     }
 
     @Override
-    public double getVolumeOfCuboid(double length, double width, double height) {
+    public double getVolumeOfCuboid(double length, double width, double height)git  {
         return 0;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
-        return 0;
+        float gallon = 4.54609188f;
+        float mile = 1.609344f;
+        float var = (mpg * mile) / gallon;
+        return (float) Math.round(var * 100) / 100;
     }
 
     @Override
