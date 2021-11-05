@@ -52,9 +52,19 @@ public class EigthTest extends DataProviderUserImplementation {
 	throw new RuntimeException("Test not implemented");
     }
 
-    @Test
-    public void mpgToKPMTest() {
-	throw new RuntimeException("Test not implemented");
+    @DataProvider
+    public Object[][] MpgToKPMDataProvider() {
+        Object[][] param =  new Object[][] {
+                {4.5f, 1.59f},
+                {5.50f, 1.95f},
+                {7.8f, 2.76f}
+        };
+        return combine(implementationsEightKataDataProvider(),param);
+    }
+    @Test(dataProvider="MpgToKPMDataProvider")
+    public void mpgToKPMTest(Eight eight, float mpg, float expected) {
+        java.util.Locale.setDefault(java.util.Locale.US);
+        Assert.assertEquals(eight.mpgToKPM(mpg), expected);
     }
 
     @Test
