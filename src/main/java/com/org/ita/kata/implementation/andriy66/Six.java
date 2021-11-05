@@ -1,67 +1,78 @@
-package com.org.ita.kata.implementation.nataskrypak;
-
+package com.org.ita.kata.implementation.andriy66;
+import static java.util.stream.Collectors.averagingDouble;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import java.util.ArrayList;
 
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        long i = 0;
-        long cube = 0;
-        while (cube < m) {
-            i++;
-            cube += (i * i * i);
+        long currentVolume = 0;
+        long n = 0;
+        while (currentVolume < m) {
+            n++;
+            currentVolume += Math.pow(n,3);
         }
-        return cube != m ? -1 : i;
+        return currentVolume == m ? n : -1;
     }
 
     @Override
     public String balance(String book) {
+        String t = book.replaceAll("([^\\n. \\da-zA-Z])", "");
+        String[] arr = t.split("[\\n]+");
+        double current = Double.parseDouble(arr[0]);
+        double total = 0;
+        int count = 0;
         StringBuilder result = new StringBuilder();
-        String[] splittedLine = book.replaceAll("[^a-zA-Z0-9 \\n.]"," ").replaceAll(" {2,}", " ").split("\n");
-        double balance = Double.parseDouble(splittedLine[0]);
-        double expense = 0;
-        result.append("Original Balance: ").append(String.format("%.2f", balance)).append("\\r\\n");
-        for(int i = 1; i < splittedLine.length; i++) {
-            String[] splittedItems = splittedLine[i].split(" ");
-            double itemExpense = Double.parseDouble(splittedItems[splittedItems.length - 1]);
-            balance -= itemExpense;
-            expense += itemExpense;
-            result.append(splittedLine[i].trim()).append(" Balance ").append(String.format("%.2f", balance)).append("\\r\\n");
+        result.append("Original Balance: " + arr[0]);
+        for (int i = 1; i < arr.length; i++) {
+            count++;
+            String[] line = arr[i].split("[ ]+");
+            current -= Double.parseDouble(line[2]);
+            total += Double.parseDouble(line[2]);
+            String u = String.format("\\r\\n%s %s %s Balance %.2f", line[0], line[1], line[2], current);
+            result.append(u);
         }
-        result.append("Total expense  ").append(String.format("%.2f", expense)).append("\\r\\n");
-        result.append("Average expense  ").append(String.format("%.2f", expense / (splittedLine.length - 1)));
-
+        result.append(String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total, total / count));
         return result.toString();
     }
 
     @Override
     public double f(double x) {
-        return x / (1 + Math.sqrt(x + 1));
+        return x/(Math.sqrt(1 + x) + 1);
     }
 
     @Override
     public double mean(String town, String strng) {
-        return Arrays.stream(strng.split("\n"))
-                .filter(s -> s.substring(0,s.indexOf(":")).equals(town))
-                .flatMap(s -> Arrays.stream(s.split(",")))
-                .mapToDouble(s -> Double.valueOf(s.substring(s.indexOf(" "))))
-                .average()
-                .orElse(-1.);
+        return parseTemp(town, strng).stream()
+                .collect(averagingDouble(n -> n));
     }
 
     @Override
     public double variance(String town, String strng) {
         double mean = mean(town, strng);
-        return Arrays.stream(strng.split("\n"))
-                .filter(s -> s.substring(0,s.indexOf(":")).equals(town))
-                .flatMap(s -> Arrays.stream(s.split(",")))
-                .mapToDouble(s -> Double.valueOf(s.substring(s.indexOf(" "))))
-                .map(d -> (d - mean) * (d - mean))
-                .average()
-                .orElse(-1.);
+        if (mean == -1.0) return -1.0;
+
+        return parseTemp(town, strng).stream()
+                .collect(averagingDouble(n -> (n - mean) * (n - mean)));
+    }
+    private static List<Double> parseTemp(String town, String strng) {
+        List<Double> temps = new ArrayList<>();
+        for (String line : strng.split("\\n")) {
+            String[] data = line.split(":");
+            if (town.equals(data[0])) {
+                for (String weather : data[1].split(",")) {
+                    String[] temp = weather.split("\\s");
+                    temps.add(Double.parseDouble(temp[1]));
+                }
+                break;
+            }
+        }
+
+        if (temps.isEmpty()) temps.add(-1.0);
+
+        return temps;
     }
 
     @Override
@@ -82,7 +93,7 @@ public class Six implements com.org.ita.kata.Six {
         int wins = 0, draws = 0, lose = 0, scored = 0, conceded = 0, points = 0;
         for (int i = 0; i < teams.size(); i++) {
             try {
-                boolean draw = scores.get(i)[0].equals(scores.get(i)[1]);
+                boolean draw = scores.get(i)[0] == scores.get(i)[1];
             } catch (ArrayIndexOutOfBoundsException e) {
                 return "Error(float number):" + games.get(i);
             }
@@ -94,7 +105,7 @@ public class Six implements com.org.ita.kata.Six {
                 scored += scores.get(i)[1];
                 conceded += scores.get(i)[0];
             }
-            if (scores.get(i)[0].equals(scores.get(i)[1])) {
+            if (scores.get(i)[0] == scores.get(i)[1]) {
                 draws++;
                 points++;
             } else if (scores.get(i)[0] < scores.get(i)[1]) {
@@ -119,17 +130,19 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
-            return " ";
-        }
-        String result = " ";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) return "";
+
+        int sum = 0;
+        String res = "";
+
         for (String i : lstOf1stLetter) {
-            int sum = 0;
+            sum = 0;
             for (String j : lstOfArt) {
-                sum += j.substring(0, 1).equals(i) ? Integer.parseInt(j.replaceAll("[^0-9]","")) : 0;
+                sum += j.substring(0,1).equals(i) ? Integer.parseInt(j.replaceAll("[^0-9]","")) : 0;
             }
-            result += " - (" + i + " : " + sum + ")";
+            res += " - (" + i + " : " + sum + ")";
         }
-        return result.substring(3);
+
+        return res.substring(3);
     }
 }
