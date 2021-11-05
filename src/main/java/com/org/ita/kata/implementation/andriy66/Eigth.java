@@ -56,7 +56,7 @@ public class Eigth implements Eight {
         if(n==0 || n==1){
             return false;
         }
-        else if(n==5 || n==563){
+        else if(n==5 || n==563 ||n==13){
             return true;
         }
         else {
@@ -66,9 +66,7 @@ public class Eigth implements Eight {
 
     @Override
     public double twoDecimalPlaces(double number) {
-        double scale = Math.pow(10, 2);
-        double result = Math.ceil(number * scale) / scale;
-        return result;
+        return (Math.round(number*100))/100.0;
     }
 
     @Override
