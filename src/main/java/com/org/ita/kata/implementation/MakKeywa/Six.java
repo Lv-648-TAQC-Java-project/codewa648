@@ -3,7 +3,13 @@ package com.org.ita.kata.implementation.MakKeywa;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        return 0;
+        long currentVolume = 0;
+        long n = 0;
+        while (currentVolume < m) {
+            n++;
+            currentVolume += n * n * n;
+        }
+        return currentVolume == m ? n : -1;
     }
 
     @Override
