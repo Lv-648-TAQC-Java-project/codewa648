@@ -22,6 +22,35 @@ public class EigthTest extends DataProviderUserImplementation {
 	boolean actualResult = eight.amIWilson(data);
 	Assert.assertTrue(actualResult);
     }
+    
+    @DataProvider
+    public Object[][] wilsonPrimeInvalidData() {
+
+	Object[][] param = new Object[][] { 
+	    { 210.0 },
+	    { 70.0 },
+	    { 384.0 },
+	    { 271.0 },
+	    { 369.0 },
+	    { 498.0 },
+	    { 111.0 },
+	    { 486.0 },
+	    { 158.0 },
+	    { 257.0 },
+	    { 513.0 },
+	    { 302.0 },
+	    { 560.0 },
+	    { 240.0 }
+
+	};
+	return combine(implementationsEightKataDataProvider(), param);
+    }
+
+    @Test(dataProvider = "wilsonPrimeInvalidData")
+    public void amIWilsonInvalidTest(Eight eight, double data) {
+	boolean actualResult = eight.amIWilson(data);
+	Assert.assertFalse(actualResult);
+    }
 
     @DataProvider
     public Object[][] volumeOfCuboidDataProvider() {
