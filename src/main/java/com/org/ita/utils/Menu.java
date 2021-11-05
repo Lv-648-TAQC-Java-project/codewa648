@@ -6,14 +6,14 @@ public class Menu {
     private ConsoleScanner cs;
     private Users user;
     private Runner runner;
-    private String[] nameKatas = new String[]{"Five", "Six", "Seven", "Eigth"};
-    private String[] optionsAllCommands = new String[]{"Show all users", "Set user implementation and run task", "Show tasks"};
-    private String[] nameTasksEigth = new String[]{"KeepHydrated", "VolumeOfCuboid", "MpgToKpm", "SquareOrSquareRoot", "CountPositivesSumNegatives", "ConvertAStringToANumber", "AmIWilson", "TwoDecimalPlaces", "DivisibleBy"};
-    private String[] nameTasksSeven = new String[]{"LookingForABenefactor", "SeriesSum", "WhereIsHe"};
-    private String[] nameTasksSix = new String[]{"FindNB", "Balance", "F", "Rainfall", "NbaCup", "HelpTheBookseller"};
-    private String[] nameTasksFive = new String[]{"ArtificialRain", "Gap", "Zeros", "Perimeter", "SolveSum", "Smallest"};
-    private String msgOnPrevious = "on previous level";
-    private String msgTaskToRun = "task to run";
+    private final String[] nameKatas = new String[]{"Five", "Six", "Seven", "Eigth"};
+    private final String[] optionsAllCommands = new String[]{"Show all users", "Set user implementation and run task", "Show tasks"};
+    private final String[] nameTasksEigth = new String[]{"KeepHydrated", "VolumeOfCuboid", "MpgToKpm", "SquareOrSquareRoot", "CountPositivesSumNegatives", "ConvertAStringToANumber", "AmIWilson", "TwoDecimalPlaces", "DivisibleBy"};
+    private final String[] nameTasksSeven = new String[]{"LookingForABenefactor", "SeriesSum", "WhereIsHe"};
+    private final String[] nameTasksSix = new String[]{"FindNB", "Balance", "F", "Rainfall", "NbaCup", "HelpTheBookseller"};
+    private final String[] nameTasksFive = new String[]{"ArtificialRain", "Gap", "Zeros", "Perimeter", "SolveSum", "Smallest"};
+    private final String msgOnPrevious = "on previous level";
+    private final String msgTaskToRun = "task to run";
 
     public void run() {
         cs = new ConsoleScanner(view);
