@@ -42,22 +42,9 @@ public class EigthTest extends DataProviderUserImplementation {
 	throw new RuntimeException("Test not implemented");
     }
 
-    @DataProvider
-    public Object[][] divisibleByDataProvider() {
-        Object[][] param = new Object[][]{
-                {new int[]{1, 2, 3, 4, 5, 6}, 2, new int[]{2, 4, 6}},
-                {new int[]{1, 2, 3, 4, 5, 6}, 3, new int[]{3, 6}},
-                {new int[]{0, 1, 2, 3, 4, 5, 6}, 4, new int[]{0, 4}},
-                {new int[]{-1, -2, 3, -4, 5, 10}, 2, new int[]{-2, -4, 10}},
-                {new int[]{1, -2, 3, -4, 5, 10}, 0, new int[]{}},
-                {new int[]{0, -2, 3, 4, 9, -33}, -3, new int[]{0, 3, 9, -33}}
-        };
-        return combine(implementationsEightKataDataProvider(), param);
-    }
-
-    @Test(dataProvider = "divisibleByDataProvider")
-    public void divisibleByTest(Eight eight, int[] numbers, int divider, int[] expected) {
-        Assert.assertEquals(eight.divisibleBy(numbers, divider), expected);
+    @Test
+    public void divisibleByTest() {
+        throw new RuntimeException("Test not implemented");
     }
 
     @Test
