@@ -67,9 +67,18 @@ public class EigthTest extends DataProviderUserImplementation {
 	throw new RuntimeException("Test not implemented");
     }
 
-    @Test
-    public void twoDecimalPlacesTest() {
-	throw new RuntimeException("Test not implemented");
+
+    @DataProvider
+    public Object[][] twoDecimalPlacesDataProvider() {
+        Object[][] param = new Object[][] { {4.659725356,4.66},
+                { 173735326.3783732637948948,173735326.38},
+                {23.449, 23.45}
+        };
+        return combine(implementationsEightKataDataProvider(), param);
+    }
+    @Test(dataProvider = "twoDecimalPlacesDataProvider")
+    public void twoDecimalPlacesTest(Eight eight,double number,double expected) {
+        Assert.assertEquals(eight.twoDecimalPlaces(number),expected);
     }
 
 }
