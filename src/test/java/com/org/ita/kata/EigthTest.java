@@ -1,5 +1,6 @@
 package com.org.ita.kata;
 
+import com.org.ita.kata.implementation.Pidstavskiy.Eigth;
 import org.testng.annotations.Test;
 
 import org.testng.annotations.DataProvider;
@@ -37,9 +38,19 @@ public class EigthTest extends DataProviderUserImplementation {
 	Assert.assertEquals(eight.getVolumeOfCuboid(a, b, c), expected);
     }
 
-    @Test
-    public void countPositivesSumNegativesTest() {
-	throw new RuntimeException("Test not implemented");
+    @DataProvider
+    public Object[][] countPositivesSumNegativesProvider() {
+        Object[][] param = new Object[][] {
+                {new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}, new int[]{10, -65}},
+                {new int[]{0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}, new int[]{8, -50}},
+                {new int[]{-5, 6, 8, 9, -42, -6, 5, -6, 8, 4, 3, -13, 10, 11}, new int[]{9, -72}}
+        };
+        return combine(implementationsEightKataDataProvider(), param);
+    }
+
+    @Test(dataProvider = "countPositivesSumNegativesProvider")
+    public void countPositivesSumNegativesTest(Eight eigth, int[] array, int[] expectedResult) {
+        Assert.assertEquals(eigth.countPositivesSumNegatives(array), expectedResult);
     }
 
     @Test
