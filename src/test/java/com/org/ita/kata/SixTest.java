@@ -16,6 +16,7 @@ public class SixTest extends DataProviderUserImplementation{
     };
     return combine(implementationsSixKataDataProvider(), param);
   }
+
   @Test(dataProvider = "easyBalanceCheckingDataProvider")
   public void balanceTest(Six six, String book, String expected) {
     java.util.Locale.setDefault(java.util.Locale.US);
