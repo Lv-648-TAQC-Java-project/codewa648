@@ -6,7 +6,9 @@ import org.testng.annotations.DataProvider;
 
 import org.testng.Assert;
 
-public class EigthTest extends DataProviderUserImplementation {
+import java.math.BigInteger;
+
+public class EigthTest extends DataProviderUserImplementation{
 
     @DataProvider
     public Object[][] wilsonPrimeValidData() {
@@ -62,9 +64,20 @@ public class EigthTest extends DataProviderUserImplementation {
 	throw new RuntimeException("Test not implemented");
     }
 
-    @Test
-    public void stringToNumberTest() {
-	throw new RuntimeException("Test not implemented");
+    @DataProvider
+    Object[][] stringToNumberDataProvider() {
+        Object[][] param = new Object[][] {
+                {"1234", 1234},
+                {"1405", 1405},
+                {"605", 605},
+                {"-7", -7},
+                {"0", 0}
+        };
+        return combine(implementationsEightKataDataProvider(), param);
+    }
+    @Test(dataProvider = "stringToNumberDataProvider")
+    public void stringToNumberTest(Eight eight, String str, int expected) {
+        Assert.assertEquals(eight.stringToNumber(str), expected);
     }
 
     @Test
