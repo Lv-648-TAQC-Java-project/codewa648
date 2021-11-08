@@ -25,7 +25,7 @@ public class Seven implements com.org.ita.kata.Seven {
         for (double i = 2.0; i <= n; i++) {
             res += 1.0 / (i * 3.0 - 2.0);
         }
-        String result = "" + Math.round(res * 100.0) / 100.0;
+        double result = Math.round(res * 100.0) / 100.0;
         return String.format("%.2f", result);
     }
 
