@@ -56,7 +56,7 @@ public class EigthTest extends DataProviderUserImplementation{
 
     @Test
     public void divisibleByTest() {
-	throw new RuntimeException("Test not implemented");
+        throw new RuntimeException("Test not implemented");
     }
 
     @Test
