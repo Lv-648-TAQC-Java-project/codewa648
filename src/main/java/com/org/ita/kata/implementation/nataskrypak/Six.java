@@ -36,7 +36,7 @@ public class Six implements com.org.ita.kata.Six {
         if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
             return " ";
         }
-        String result = " ";
+        String result = "";
         for (String i : lstOf1stLetter) {
             int sum = 0;
             for (String j : lstOfArt) {
