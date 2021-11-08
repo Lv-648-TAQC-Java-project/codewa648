@@ -1,6 +1,5 @@
 package com.org.ita.kata;
 
-import com.org.ita.kata.implementation.Pidstavskiy.Eigth;
 import org.testng.annotations.Test;
 
 import org.testng.annotations.DataProvider;
