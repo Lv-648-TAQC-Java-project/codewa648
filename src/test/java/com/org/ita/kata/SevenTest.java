@@ -5,7 +5,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
+
 public class SevenTest extends DataProviderUserImplementation {
+
 
     @DataProvider
     public Object[][] newAvgValidData() {
@@ -19,10 +21,25 @@ public class SevenTest extends DataProviderUserImplementation {
     }
 
 
-    @Test(dataProvider = "newAvgValidData")
-    public void newAvgTest(Seven seven, double[] array, double navg, long expected) {
-        Assert.assertEquals(seven.newAvg(array, navg), expected);
-    }
+
+  @DataProvider
+  public Object[][] whereIsHeDataProvider() {
+    Object[][] param = new Object[][]{
+            {3, 1, 1, 2},
+            {5, 2, 3, 3}
+    };
+    return combine(implementationsSevenKataDataProvider(), param);
+  }
+
+  @Test(dataProvider = "whereIsHeDataProvider")
+  public void whereIsHeTest(Seven seven, int p, int bef, int aft, int expected) {
+    Assert.assertEquals(seven.whereIsHe(p, bef, aft), expected);
+  }
+  
+  @Test(dataProvider = "newAvgValidData")
+  public void newAvgTest(Seven seven, double[] array, double navg, long expected) {
+      Assert.assertEquals(seven.newAvg(array, navg), expected);
+  }
 
   @DataProvider
   public Object[][] seriesSumDataProvider() {
