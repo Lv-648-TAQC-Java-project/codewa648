@@ -3,7 +3,8 @@ package com.org.ita.kata.implementation.AndriyBarskyi;
 public class Six implements com.org.ita.kata.Six {
     @Override
     public long findNb(long m) {
-        long n = 0, sum = 0;
+        long n = 0;
+        long sum = 0;
         while (sum < m) {
             n++;
             sum += n * n * n;
@@ -13,11 +14,10 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
-        book = book.replaceAll("[^0-9A-z\\.\n ]", "");
+        book = book.replaceAll("[^0-9A-z\n ]", "");
         book = book.replaceAll("  ", " ");
         book = book.replaceAll(" \n", "\n");
         book = book.trim();
-        System.out.println("Clear book\n" + book);
         String[] arr = book.split("\\n");
         double bal = Double.parseDouble(arr[0]);
         double totalExpense = 0;
@@ -46,10 +46,12 @@ public class Six implements com.org.ita.kata.Six {
     public double mean(String town, String strng) {
         String[] towns = strng.split("\n");
         String townInfo = "";
-        for (String i: towns) {
-            if (i.split(":")[0].equals(town))
+        for (String i : towns) {
+            if (i.split(":")[0].equals(town)) {
                 townInfo = i;
+            }
         }
+
         if (townInfo.equals("")) {
             return -1.0;
         }
@@ -65,9 +67,10 @@ public class Six implements com.org.ita.kata.Six {
     public double variance(String town, String strng) {
         String[] towns = strng.split("\n");
         String townInfo = "";
-        for (String i: towns) {
-            if (i.split(":")[0].equals(town))
+        for (String i : towns) {
+            if (i.split(":")[0].equals(town)) {
                 townInfo = i;
+            }
         }
         if (townInfo.equals("")) {
             return -1.0;
@@ -88,9 +91,9 @@ public class Six implements com.org.ita.kata.Six {
             return res;
         }
         String[] allMatches = resultSheet.split(",");
-        for (int i = 0; i < allMatches.length; i++) {
-            if (allMatches[i].matches(".*[0-9]+[.][0-9]+.*")) {
-                res = "Error(float number):" + allMatches[i];
+        for (String allMatch : allMatches) {
+            if (allMatch.matches(".*[0-9]+[.][0-9]+.*")) {
+                res = "Error(float number):" + allMatch;
                 return res;
             }
         }
@@ -106,19 +109,19 @@ public class Six implements com.org.ita.kata.Six {
             team1[i] = "";
             team2[i] = "";
             firstTeamParsed = false;
-            for (int j = 0; j < parsingOneMatch.length; j++) {
-                if (!parsingOneMatch[j].matches("^[0-9]+$")) {
+            for (String oneMatch : parsingOneMatch) {
+                if (!oneMatch.matches("^[0-9]+$")) {
                     if (!firstTeamParsed) {
-                        team1[i] += parsingOneMatch[j] + " ";
+                        team1[i] += oneMatch + " ";
                     } else {
-                        team2[i] += parsingOneMatch[j] + " ";
+                        team2[i] += oneMatch + " ";
                     }
                 } else {
                     if (!firstTeamParsed) {
-                        scores1[i] = Integer.parseInt(parsingOneMatch[j]);
+                        scores1[i] = Integer.parseInt(oneMatch);
                         firstTeamParsed = true;
                     } else {
-                        scores2[i] = Integer.parseInt(parsingOneMatch[j]);
+                        scores2[i] = Integer.parseInt(oneMatch);
                     }
                 }
             }
@@ -175,10 +178,12 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) return "";
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
         int[] sum = new int[lstOf1stLetter.length];
         for (int i = 0; i < lstOf1stLetter.length; i++) {
-            for (String j: lstOfArt) {
+            for (String j : lstOfArt) {
                 if (j.startsWith(lstOf1stLetter[i])) {
                     sum[i] += Integer.parseInt(j.split(" ")[1]);
                 }
