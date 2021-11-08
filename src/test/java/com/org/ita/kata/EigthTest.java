@@ -73,9 +73,7 @@ public class EigthTest extends DataProviderUserImplementation {
         int[] in = new int[st.countTokens()];
         for (int i = 0; i < in.length; i++) {
             in[i] = Integer.parseInt(st.nextToken());
-            System.out.print(in[i] + " ");
         }
-        System.out.println();
         Assert.assertEquals(Arrays.toString(eight.squareOrSquareRoot(in)), Arrays.toString(expected));
     }
 
