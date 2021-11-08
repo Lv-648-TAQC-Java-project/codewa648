@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-public class FiveTest extends DataProviderUserImplementation {
 
+public class FiveTest extends DataProviderUserImplementation {
 
 
   @DataProvider
@@ -24,9 +24,22 @@ public class FiveTest extends DataProviderUserImplementation {
     Assert.assertEquals(five.artificialRain(v), expected);
   }
 
-  @Test
-  public void gapTest() {
-    throw new RuntimeException("Test not implemented");
+  @DataProvider
+  public Object[][] gapDataProvider() {
+    Object[][] param = new Object[][]{
+            {2, 100, 110, new long[]{101, 103}},
+            {4, 100, 110, new long[]{103, 107}},
+            {6, 100, 110, null},
+            {8, 300, 400, new long[]{359, 367}},
+            {10, 300, 400, new long[]{337, 347}},
+
+    };
+    return combine(implementationsFiveKataDataProvider(), param);
+  }
+
+  @Test(dataProvider = "gapDataProvider")
+  public void gapTest(Five five, int gap, long start, long end, long[] expected) {
+    Assert.assertEquals(five.gap(gap, start, end), expected);
   }
 
   @DataProvider
