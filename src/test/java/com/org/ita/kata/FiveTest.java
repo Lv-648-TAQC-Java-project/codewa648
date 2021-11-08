@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class FiveTest extends DataProviderUserImplementation {
 
 
+
   @DataProvider
   public Object[][] ArtificialRainDataProvider() {
     Object[][] param =  new Object[][] {
@@ -35,6 +36,7 @@ public class FiveTest extends DataProviderUserImplementation {
             {new BigInteger(String.valueOf(5)), new BigInteger(String.valueOf(80))},
             {new BigInteger(String.valueOf(7)), new BigInteger(String.valueOf(216))},
             {new BigInteger(String.valueOf(30)), new BigInteger(String.valueOf(14098308))}
+
     };
     return combine(implementationsFiveKataDataProvider(), param);
   }
