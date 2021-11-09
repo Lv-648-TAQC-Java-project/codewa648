@@ -5,6 +5,9 @@ import com.org.ita.kata.Eight;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
+        if(time<0){
+            return 0;
+        }
         return (int) (time * 0.5);
     }
 
@@ -72,7 +75,7 @@ public class Eigth implements Eight {
         return Math.ceil(condition) == condition;
     }
 
-    public static double factorial(double n){
+    private static double factorial(double n){
         int res = 1;
         if(n<0){
             return 0;
