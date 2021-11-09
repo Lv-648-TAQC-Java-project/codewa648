@@ -51,6 +51,9 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
+        if(book.length()==0){
+            return "";
+        }
         String res = "";
         String endLine = "\\r\\n";
         String cleanBook = book.replaceAll("[^a-zA-Z0-9. \n]", "").replaceAll(" +", " ");
