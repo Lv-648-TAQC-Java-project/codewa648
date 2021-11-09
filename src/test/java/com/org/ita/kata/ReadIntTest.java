@@ -32,7 +32,7 @@ public class ReadIntTest {
     }
 
     @Test(dataProvider = "readIntTestDataProvider")
-    public void readIntTest(String data, float expected) {
+    public void readIntTest(String data, int expected) {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         Viewer view = new Viewer();
         ConsoleScanner cs = new ConsoleScanner(view);
