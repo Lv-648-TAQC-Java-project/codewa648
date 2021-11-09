@@ -52,7 +52,6 @@ public class FiveTest extends DataProviderUserImplementation {
                 {new BigInteger(String.valueOf(30)), new BigInteger(String.valueOf(14098308))},
                 {new BigInteger(String.valueOf(1)), new BigInteger(String.valueOf(4))},
                 {new BigInteger(String.valueOf(0)), new BigInteger(String.valueOf(0))}
-
         };
         return combine(implementationsFiveKataDataProvider(), param);
     }

@@ -88,8 +88,11 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        if (n.compareTo(BigInteger.valueOf(2)) < 0) {
+        if (n.compareTo(BigInteger.valueOf(1)) < 0) {
             return BigInteger.ZERO;
+        }
+        if (n.compareTo(BigInteger.valueOf(2)) < 0) {
+            return BigInteger.valueOf(4);
         }
         BigInteger prevFib = BigInteger.valueOf(0);
         BigInteger currentFib = BigInteger.valueOf(1);
