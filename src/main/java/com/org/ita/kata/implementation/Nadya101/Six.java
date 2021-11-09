@@ -63,6 +63,10 @@ public class Six implements com.org.ita.kata.Six {
         String[] parsingOneMatch;
         boolean firstTeamParsed;
 
+        if(toFind.isEmpty()){
+            return "";
+        }
+
         if (!resultSheet.contains(toFind)) {
             return toFind + ":This team didn't play!";
         }
