@@ -10,7 +10,7 @@ public class Eigth implements Eight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return length*width*height;
+        return length * width * height;
     }
 
     @Override
@@ -84,8 +84,10 @@ public class Eigth implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
+        if (numbers.length == 0 || divider == 0) {
+            return null;
+        }
         int count = 0;
-
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] % divider == 0) {
                 count++;
