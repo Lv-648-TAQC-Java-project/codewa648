@@ -7,6 +7,9 @@ import java.util.Arrays;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
+        if(time<0){
+            return 0;
+        }
         return (int) Math.floor(time*0.5);
     }
 
@@ -81,6 +84,9 @@ public class Eigth implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
+        if(numbers.length==0 || divider==0){
+            return null;
+        }
         int[] newArray = new int[numbers.length];
         int result = 0;
         for (int i = 0; i < numbers.length; i++) {

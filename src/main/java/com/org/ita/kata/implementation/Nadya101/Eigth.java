@@ -35,14 +35,19 @@ public class Eigth implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        for(int i = 0; i<array.length;i++){
-            if(Math.sqrt(array[i])%1==0){
-                array[i]=(int)(Math.sqrt(array[i]));
-            }else{
-                array[i]=array[i]*array[i];
+        int[] newArray = new int[array.length];
+        try {
+            for (int i = 0; i < array.length; i++) {
+                if (Math.sqrt(array[i]) % 1 == 0) {
+                    newArray[i] = (int) (Math.sqrt(array[i]));
+                } else {
+                    newArray[i] = array[i] * array[i];
+                }
             }
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
         }
-        return array;
+        return newArray;
     }
 
     @Override
