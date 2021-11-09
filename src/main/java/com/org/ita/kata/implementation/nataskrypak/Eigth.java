@@ -63,9 +63,12 @@ public class Eigth implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
+        if (divider == 0 || numbers.length == 0) {
+            return new int[]{};
+        }
         int count = 0;
         for(int i = 0; i < numbers.length; i++){
-            if(i % divider == 0){
+            if(numbers[i] % divider == 0){
                 count++;
             }
         }
