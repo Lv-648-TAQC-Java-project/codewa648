@@ -55,6 +55,9 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
+        if(n.compareTo(BigInteger.valueOf(2))<0){
+            return BigInteger.ZERO;
+        }
         BigInteger p0 = BigInteger.valueOf(0);
         BigInteger p1 = BigInteger.valueOf(1);
         BigInteger p2 = BigInteger.valueOf(1);
