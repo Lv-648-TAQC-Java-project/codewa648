@@ -53,6 +53,7 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
+
         BigInteger first = BigInteger.ZERO;
         BigInteger second = BigInteger.ONE;
         BigInteger third = BigInteger.ONE;
