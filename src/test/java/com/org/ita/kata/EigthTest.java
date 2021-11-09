@@ -55,8 +55,12 @@ public class EigthTest extends DataProviderUserImplementation {
 
     @DataProvider
     public Object[][] volumeOfCuboidDataProvider() {
-        Object[][] param = new Object[][]{{1, 2, 2, 4}, {6.3, 2, 5, 63}
-
+        Object[][] param = new Object[][]{
+                {1, 2, 2, 4},
+                {6.3, 2, 5, 63},
+                {0, 0, 0, 0},
+                {-1, 3, 4, 0},
+                {0, 64, -45, 0}
         };
         return combine(implementationsEightKataDataProvider(), param);
     }
