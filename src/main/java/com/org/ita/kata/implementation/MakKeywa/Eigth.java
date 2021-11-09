@@ -86,19 +86,6 @@ public class Eigth implements Eight {
         return Math.ceil(condition) == condition;
     }
 
-
-    private static double factorial(double n){
-        int res = 1;
-        if(n<0){
-            return 0;
-        }
-        for(int i = 2; i<=n;i++){
-            res*=i;
-        }
-        return res;
-    }
-
-
     @Override
     public double twoDecimalPlaces(double number) {
         return Math.round(number * 100) / 100.0;
