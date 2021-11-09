@@ -20,11 +20,11 @@ public class Six implements com.org.ita.kata.Six {
     @Override
     public String balance(String book) {
         StringBuilder result = new StringBuilder();
-        String[] splittedLine = book.replaceAll("[^a-zA-Z0-9 \\n.]"," ").replaceAll(" {2,}", " ").split("\n");
+        String[] splittedLine = book.replaceAll("[^a-zA-Z0-9 \\n.]", " ").replaceAll(" {2,}", " ").split("\n");
         double balance = Double.parseDouble(splittedLine[0]);
         double expense = 0;
         result.append("Original Balance: ").append(String.format("%.2f", balance)).append("\\r\\n");
-        for(int i = 1; i < splittedLine.length; i++) {
+        for (int i = 1; i < splittedLine.length; i++) {
             String[] splittedItems = splittedLine[i].split(" ");
             double itemExpense = Double.parseDouble(splittedItems[splittedItems.length - 1]);
             balance -= itemExpense;
@@ -45,7 +45,7 @@ public class Six implements com.org.ita.kata.Six {
     @Override
     public double mean(String town, String strng) {
         return Arrays.stream(strng.split("\n"))
-                .filter(s -> s.substring(0,s.indexOf(":")).equals(town))
+                .filter(s -> s.substring(0, s.indexOf(":")).equals(town))
                 .flatMap(s -> Arrays.stream(s.split(",")))
                 .mapToDouble(s -> Double.valueOf(s.substring(s.indexOf(" "))))
                 .average()
@@ -56,7 +56,7 @@ public class Six implements com.org.ita.kata.Six {
     public double variance(String town, String strng) {
         double mean = mean(town, strng);
         return Arrays.stream(strng.split("\n"))
-                .filter(s -> s.substring(0,s.indexOf(":")).equals(town))
+                .filter(s -> s.substring(0, s.indexOf(":")).equals(town))
                 .flatMap(s -> Arrays.stream(s.split(",")))
                 .mapToDouble(s -> Double.valueOf(s.substring(s.indexOf(" "))))
                 .map(d -> (d - mean) * (d - mean))
@@ -71,7 +71,7 @@ public class Six implements com.org.ita.kata.Six {
             return "";
         }
         if (games.isEmpty()) {
-            return toFind+":This team didn't play!";
+            return toFind + ":This team didn't play!";
         }
         List<String[]> teams = games.stream().map(game -> game.split("\\s\\d+(\\W|$)")).collect(Collectors.toList());
         List<Integer[]> scores = games.stream()
@@ -126,7 +126,7 @@ public class Six implements com.org.ita.kata.Six {
         for (String i : lstOf1stLetter) {
             int sum = 0;
             for (String j : lstOfArt) {
-                sum += j.substring(0, 1).equals(i) ? Integer.parseInt(j.replaceAll("[^0-9]","")) : 0;
+                sum += j.substring(0, 1).equals(i) ? Integer.parseInt(j.replaceAll("[^0-9]", "")) : 0;
             }
             result += " - (" + i + " : " + sum + ")";
         }

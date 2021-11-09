@@ -3,6 +3,23 @@ package com.org.ita.kata.implementation.AndriyBarskyi;
 import java.math.BigInteger;
 
 public class Five implements com.org.ita.kata.Five {
+    public static boolean isPrimeNumber(long i) {
+        for (long j = 2; j < i / 2; j++) {
+            if (i % j == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static long replace(long n, int i, int j) {
+        StringBuilder value = new StringBuilder(String.valueOf(n));
+        char c = value.charAt(i);
+        value.deleteCharAt(i);
+        value.insert(j, c);
+        return Long.parseLong(value.toString());
+    }
+
     @Override
     public int artificialRain(int[] v) {
         int height = 0;
@@ -20,15 +37,6 @@ public class Five implements com.org.ita.kata.Five {
             size++;
         }
         return Math.max(height, size);
-    }
-
-    public static boolean isPrimeNumber(long i) {
-        for (long j = 2; j < i / 2; j++) {
-            if (i % j == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override
@@ -72,14 +80,6 @@ public class Five implements com.org.ita.kata.Five {
     @Override
     public double solveSum(double m) {
         return (2 * m + 1 - Math.sqrt(4 * m + 1)) / (2 * m);
-    }
-
-    private static long replace(long n, int i, int j) {
-        StringBuilder value = new StringBuilder(String.valueOf(n));
-        char c = value.charAt(i);
-        value.deleteCharAt(i);
-        value.insert(j, c);
-        return Long.parseLong(value.toString());
     }
 
     @Override

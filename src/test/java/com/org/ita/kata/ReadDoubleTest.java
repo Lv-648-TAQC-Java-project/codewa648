@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.math.BigDecimal;
 
 public class ReadDoubleTest {
 

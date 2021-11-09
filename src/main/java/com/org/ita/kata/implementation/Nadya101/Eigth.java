@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
-        if(time>0){
-            return (int)(time*0.5);
-        }else{
+        if (time > 0) {
+            return (int) (time * 0.5);
+        } else {
             return -1;
         }
     }
@@ -28,7 +28,7 @@ public class Eigth implements Eight {
         final float LITTERS_IN_GALLON = 4.54609188f;
         final float KM_IN_MILE = 1.609344f;
         if (mpg > 0) {
-            return(float) Math.round((mpg*KM_IN_MILE/LITTERS_IN_GALLON)*100)/100;
+            return (float) Math.round((mpg * KM_IN_MILE / LITTERS_IN_GALLON) * 100) / 100;
         } else
             return -1;
     }
@@ -76,16 +76,16 @@ public class Eigth implements Eight {
     @Override
     public boolean amIWilson(double n) {
         long result = 1;
-        for(int i = 1; i<n; i++){ ///getFactorial
-            result *=i;
+        for (int i = 1; i < n; i++) { ///getFactorial
+            result *= i;
         }
-        if(n==0 || n==1){
+        if (n == 0 || n == 1) {
             return false;
         }
-        if(n==563){
+        if (n == 563) {
             return true;
         }
-        return ((result+1)/n)%1==0;
+        return ((result + 1) / n) % 1 == 0;
     }
 
     @Override

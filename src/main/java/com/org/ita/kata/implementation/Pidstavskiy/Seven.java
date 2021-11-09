@@ -8,10 +8,9 @@ public class Seven implements com.org.ita.kata.Seven {
             sum += v;
         }
         long result = (long) Math.ceil(navg * (arr.length + 1) - sum);
-        if (result <= 0){
+        if (result <= 0) {
             throw new IllegalArgumentException();
-        }
-        else {
+        } else {
             return result;
         }
     }

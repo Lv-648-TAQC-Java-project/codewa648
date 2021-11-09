@@ -29,6 +29,6 @@ public class Seven implements com.org.ita.kata.Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return p-Math.max(bef+1, p-aft)+1;
+        return p - Math.max(bef + 1, p - aft) + 1;
     }
 }

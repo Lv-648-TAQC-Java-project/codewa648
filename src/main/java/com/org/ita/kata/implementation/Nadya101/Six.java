@@ -39,7 +39,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double f(double x) {
-        return x/(Math.sqrt(x+1)+1);
+        return x / (Math.sqrt(x + 1) + 1);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class Six implements com.org.ita.kata.Six {
         String[] parsingOneMatch;
         boolean firstTeamParsed;
 
-        if(toFind.isEmpty()){
+        if (toFind.isEmpty()) {
             return "";
         }
 
@@ -177,29 +177,22 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        String result="";
-        if(lstOfArt.length != 0 && lstOf1stLetter.length != 0)
-        {
-            for(int i = 0; i < lstOf1stLetter.length; i++)
-            {
-                String currentLetter= lstOf1stLetter[i];
-                int count =0;
-                for(int q = 0; q < lstOfArt.length; q++)
-                {
+        String result = "";
+        if (lstOfArt.length != 0 && lstOf1stLetter.length != 0) {
+            for (int i = 0; i < lstOf1stLetter.length; i++) {
+                String currentLetter = lstOf1stLetter[i];
+                int count = 0;
+                for (int q = 0; q < lstOfArt.length; q++) {
                     String currentArt = lstOfArt[q];
-                    if( currentArt.substring(0,1).equals(currentLetter) )
-                    {
+                    if (currentArt.substring(0, 1).equals(currentLetter)) {
                         String[] artValues = currentArt.split(" ");
                         count += Integer.parseInt(artValues[1]);
                     }
                 }
                 String stock = "(" + currentLetter + " : " + count + ")";
-                if(i != lstOf1stLetter.length - 1)
-                {
+                if (i != lstOf1stLetter.length - 1) {
                     result += stock + " - ";
-                }
-                else
-                {
+                } else {
                     result += stock;
                 }
             }

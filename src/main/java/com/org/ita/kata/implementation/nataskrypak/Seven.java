@@ -1,6 +1,6 @@
 package com.org.ita.kata.implementation.nataskrypak;
-import java.text.DecimalFormat;
 
+import java.text.DecimalFormat;
 import java.util.stream.DoubleStream;
 
 public class Seven implements com.org.ita.kata.Seven {
@@ -17,7 +17,7 @@ public class Seven implements com.org.ita.kata.Seven {
     public String seriesSum(int n) {
         double sum = 0.00;
         for (int i = 0; i < n; i++) {
-            sum += (1 / (1 + (double)i * 3));
+            sum += (1 / (1 + (double) i * 3));
         }
         if (sum == 0) {
             return new DecimalFormat("#.0#").format(0);
@@ -25,9 +25,10 @@ public class Seven implements com.org.ita.kata.Seven {
             return String.format("%.2f", sum);
         }
     }
+
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return p-Math.max(bef + 1,p - aft) + 1;
+        return p - Math.max(bef + 1, p - aft) + 1;
     }
 
 }
