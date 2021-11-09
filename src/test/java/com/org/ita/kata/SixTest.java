@@ -116,11 +116,12 @@ public class SixTest extends DataProviderUserImplementation {
                 + "Chicago Bulls 103 Indiana Pacers 94,Milwaukee Bucks 106 Minnesota Timberwolves 88,Los Angeles Lakers 104 Portland Trail Blazers 102,"
                 + "Houston Rockets 120 New Orleans Pelicans 100,Boston Celtics 111 Brooklyn Nets 105,Charlotte Hornets 94 Chicago Bulls 86,Cleveland Cavaliers 103 Dallas Mavericks 97";
         String resultSheet3 = resultSheet1 + resultSheet2;
+        String resultSheet4 = "Los Angeles Lakers 97 Golden State Warriors 136,Utah Jazz 98 Denver Nuggets 78,Boston Celtics 99.6 New York Knicks 85";
         Object[][] param = new Object[][]{
                 {resultSheet3, "", ""},
                 {resultSheet3, "New Orleans Raptors", "New Orleans Raptors:This team didn't play!"},
                 {resultSheet3, "Houston Ships", "Houston Ships:This team didn't play!"},
-                {resultSheet3, "Boston Celtics", "Boston Celtics:W=4;D=0;L=0;Scored=403;Conceded=350;Points=12"},
+                {resultSheet4, "Boston Celtics", "Error(float number):Boston Celtics 99.6 New York Knicks 85"},
                 {resultSheet3, "Los Angeles Lakers", "Los Angeles Lakers:W=1;D=0;L=2;Scored=312;Conceded=350;Points=3"},
                 {resultSheet3, "Chicago Bulls", "Chicago Bulls:W=3;D=1;L=1;Scored=504;Conceded=487;Points=10"},
                 {resultSheet3, "Cleveland Cavaliers", "Cleveland Cavaliers:W=2;D=1;L=0;Scored=306;Conceded=270;Points=7"},
