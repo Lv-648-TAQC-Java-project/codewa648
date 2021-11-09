@@ -81,6 +81,9 @@ public class Eigth implements Eight {
 
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
+        if(numbers.length==0 || divider==0){
+            return null;
+        }
         int[] newArray = new int[numbers.length];
         int result = 0;
         for (int i = 0; i < numbers.length; i++) {

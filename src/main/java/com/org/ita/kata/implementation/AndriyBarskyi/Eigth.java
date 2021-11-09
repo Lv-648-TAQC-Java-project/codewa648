@@ -29,14 +29,15 @@ public class Eigth implements Eight {
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (Math.sqrt(array[i]) == (int) Math.sqrt(array[i])) {
-                array[i] = (int) Math.sqrt(array[i]);
+        int[] arrayCopy = array.clone();
+        for (int i = 0; i < arrayCopy.length; i++) {
+            if (Math.sqrt(arrayCopy[i]) == (int) Math.sqrt(arrayCopy[i])) {
+                arrayCopy[i] = (int) Math.sqrt(arrayCopy[i]);
             } else {
-                array[i] *= array[i];
+                arrayCopy[i] *= arrayCopy[i];
             }
         }
-        return array;
+        return arrayCopy;
     }
 
     @Override
