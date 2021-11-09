@@ -39,6 +39,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
+        if(book.length()==0){return "";}
         String t = book.replaceAll("([^\\n. \\da-zA-Z])", "");
         String[] arr = t.split("[\\n]+");
         double current = Double.parseDouble(arr[0]);
