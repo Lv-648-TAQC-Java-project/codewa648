@@ -13,7 +13,7 @@ public class Eigth implements Eight {
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        if(length < 0 || width < 0 || height <0) {
+        if (length < 0 || width < 0 || height < 0) {
             return 0;
         }
         return length * width * height;
@@ -62,7 +62,7 @@ public class Eigth implements Eight {
     @Override
     public boolean amIWilson(double n) {
         if (n == 0 || n == 1) {
-                return false;
+            return false;
         }
         return n == 5 || n == 13 || n == 563;
     }

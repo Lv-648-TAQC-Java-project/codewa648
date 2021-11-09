@@ -18,7 +18,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
-        if(book.length()==0){
+        if (book.length() == 0) {
             return "";
         }
         String[] line;

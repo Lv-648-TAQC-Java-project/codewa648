@@ -76,7 +76,7 @@ public class ConsoleScannerTest {
                 {"2.517\n", 2.517f},
                 {"517.89\n", 517.89f},
                 {"0.617\n", 0.617f},
-                {"sddasd\n0.3244\n",0.3244f}
+                {"sddasd\n0.3244\n", 0.3244f}
         };
     }
 
@@ -120,10 +120,10 @@ public class ConsoleScannerTest {
         String test4 = "-9657340220494756429392457655819181184725950006958367375";
         BigInteger expected4 = new BigInteger(test4);
         return new Object[][]{
-                {test1+"\n", expected1},
-                {test2+"\n", expected2},
-                {test3+"\n", expected3},
-                {"jkdshfkjs\n"+test4+"\n", expected4}
+                {test1 + "\n", expected1},
+                {test2 + "\n", expected2},
+                {test3 + "\n", expected3},
+                {"jkdshfkjs\n" + test4 + "\n", expected4}
         };
     }
 
@@ -145,9 +145,9 @@ public class ConsoleScannerTest {
         String data3 = "9.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999";
         BigDecimal expected3 = new BigDecimal(data3);
         return new Object[][]{
-                {data1+"\n", expected1},
-                {data2+"\n", expected2},
-                {"jkdsf\n"+data3+"\n", expected3}
+                {data1 + "\n", expected1},
+                {data2 + "\n", expected2},
+                {"jkdsf\n" + data3 + "\n", expected3}
         };
 
     }
