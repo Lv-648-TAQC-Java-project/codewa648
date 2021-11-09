@@ -20,10 +20,11 @@ public class ConsoleScanner {
         try {
             input = sc.nextInt();
         } catch (InputMismatchException e) {
-            sc.next();
+            sc.nextLine();
             view.inputError();
             return readInt();
         }
+        sc.nextLine();
         return input;
     }
 
@@ -32,10 +33,11 @@ public class ConsoleScanner {
         try {
             input = sc.nextLong();
         } catch (InputMismatchException e) {
-            sc.next();
+            sc.nextLine();
             view.inputError();
             return readLong();
         }
+        sc.nextLine();
         return input;
     }
 
@@ -44,10 +46,11 @@ public class ConsoleScanner {
         try {
             input = sc.nextFloat();
         } catch (InputMismatchException e) {
-            sc.next();
+            sc.nextLine();
             view.inputError();
             return readFloat();
         }
+        sc.nextLine();
         return input;
     }
 
@@ -56,10 +59,11 @@ public class ConsoleScanner {
         try {
             input = sc.nextDouble();
         } catch (InputMismatchException e) {
-            sc.next();
+            sc.nextLine();
             view.inputError();
             return readDouble();
         }
+        sc.nextLine();
         return input;
     }
 
@@ -74,10 +78,11 @@ public class ConsoleScanner {
         try {
             input = sc.nextBigInteger();
         } catch (InputMismatchException e) {
-            sc.next();
+            sc.nextLine();
             view.inputError();
             return readBigInteger();
         }
+        sc.nextLine();
         return input;
     }
 
@@ -86,9 +91,11 @@ public class ConsoleScanner {
         try {
             input = sc.nextBigDecimal();
         } catch (InputMismatchException e) {
-            sc.next();
+            sc.nextLine();
             view.inputError();
+            return readBigDecimal();
         }
+        sc.nextLine();
         return input;
     }
 
@@ -100,7 +107,7 @@ public class ConsoleScanner {
             for (int i = 0; i < output.length; i++) {
                 output[i] = Integer.parseInt(st.nextToken());
             }
-        } catch (InputMismatchException e) {
+        } catch (NumberFormatException e) {
             view.inputError();
             return readArrayInt();
         }
@@ -115,7 +122,7 @@ public class ConsoleScanner {
             for (int i = 0; i < output.length; i++) {
                 output[i] = Double.parseDouble(st.nextToken());
             }
-        } catch (InputMismatchException e) {
+        } catch (NumberFormatException e) {
             view.inputError();
             return readArrayDouble();
         }
