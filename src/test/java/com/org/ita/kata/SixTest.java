@@ -1,8 +1,13 @@
 package com.org.ita.kata;
 
+
 import org.testng.Assert;
+
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.Assert;
+
 
 public class SixTest extends DataProviderUserImplementation {
 
@@ -158,30 +163,5 @@ public class SixTest extends DataProviderUserImplementation {
 	double actual = six.f(data);
 	boolean inrange = Math.abs((actual - expected) / expected) <= 1e-12;
 	Assert.assertFalse(inrange);
-    }
-
-    @Test
-    public void findNbTest() {
-	throw new RuntimeException("Test not implemented");
-    }
-
-    @Test
-    public void meanTest() {
-	throw new RuntimeException("Test not implemented");
-    }
-
-    @Test
-    public void nbaCupTest() {
-	throw new RuntimeException("Test not implemented");
-    }
-
-    @Test
-    public void stockSummaryTest() {
-	throw new RuntimeException("Test not implemented");
-    }
-
-    @Test
-    public void varianceTest() {
-	throw new RuntimeException("Test not implemented");
     }
 }

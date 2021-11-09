@@ -24,7 +24,9 @@ public class Five implements com.org.ita.kata.Five {
 
     public static boolean isPrimeNumber(long i) {
         for (long j = 2; j < i / 2; j++) {
-            if (i % j == 0) return false;
+            if (i % j == 0) {
+                return false;
+            }
         }
         return true;
     }
@@ -47,7 +49,7 @@ public class Five implements com.org.ita.kata.Five {
     public int zeros(int n) {
         int count = 0;
         int divider = 5;
-        while ((n/divider) > 0) {
+        while ((n / divider) > 0) {
             count += n / divider;
             divider *= 5;
         }
@@ -61,7 +63,7 @@ public class Five implements com.org.ita.kata.Five {
         fibo[1] = BigInteger.valueOf(1);
         BigInteger sum = fibo[0].add(fibo[1]);
         for (int i = 2; i <= n.intValue(); i++) {
-            fibo[i] = fibo[i-1].add(fibo[i-2]);
+            fibo[i] = fibo[i - 1].add(fibo[i - 2]);
             sum = sum.add(fibo[i]);
         }
         return sum.multiply(BigInteger.valueOf(4));

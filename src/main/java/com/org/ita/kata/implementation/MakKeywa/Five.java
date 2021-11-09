@@ -15,7 +15,7 @@ public class Five implements com.org.ita.kata.Five {
         return maxWateredPlains;
     }
 
-    public static int[] computeLeftFlow(int[] numbers) {
+    private static int[] computeLeftFlow(int[] numbers) {
         int[] result = new int[numbers.length];
         for (int i = 0; i < numbers.length; i++) {
             if (canFlowLeft(numbers, i)) {
@@ -27,7 +27,7 @@ public class Five implements com.org.ita.kata.Five {
         return result;
     }
 
-    public static int[] computeRightFlow(int[] numbers) {
+    private static int[] computeRightFlow(int[] numbers) {
         int[] result = new int[numbers.length];
         for (int i = numbers.length - 1; i >= 0; i--) {
             if (canFlowRight(numbers, i)) {
@@ -39,14 +39,14 @@ public class Five implements com.org.ita.kata.Five {
         return result;
     }
 
-    public static boolean canFlowLeft(int[] numbers, int i) {
+    private static boolean canFlowLeft(int[] numbers, int i) {
         if (i == 0) {
             return false;
         }
         return numbers[i - 1] <= numbers[i];
     }
 
-    public static boolean canFlowRight(int[] numbers, int i) {
+    private static boolean canFlowRight(int[] numbers, int i) {
         if (numbers.length - 1 == i) {
             return false;
         }
@@ -77,7 +77,7 @@ public class Five implements com.org.ita.kata.Five {
         return null;
     }
 
-    public static boolean isPrime(long n) {
+    private static boolean isPrime(long n) {
         if (n < 0 || n == 0 || n == 1) {
             return false;
         }
@@ -118,7 +118,7 @@ public class Five implements com.org.ita.kata.Five {
         return BigInteger.valueOf(4).multiply(fibonacciSum(n));
     }
 
-    public static BigInteger fibonacciSum(BigInteger n) {
+    private static BigInteger fibonacciSum(BigInteger n) {
         n = n.add(BigInteger.valueOf(1));
         BigInteger sum = BigInteger.valueOf(0);
         BigInteger previous = BigInteger.valueOf(1);
@@ -169,7 +169,7 @@ public class Five implements com.org.ita.kata.Five {
         return res;
     }
 
-    public static long arrToLong(int[] digit) {
+    private static long arrToLong(int[] digit) {
         String number = "";
         for (int i = 0; i < digit.length; i++) {
             number += "" + digit[i];
@@ -177,7 +177,7 @@ public class Five implements com.org.ita.kata.Five {
         return Long.parseLong(number);
     }
 
-    public static int[] swapIToStart(int[] digit, int i, int j) {
+    private static int[] swapIToStart(int[] digit, int i, int j) {
         int[] copy = new int[digit.length];
         Arrays.fill(copy, -1);
         copy[j] = digit[i];

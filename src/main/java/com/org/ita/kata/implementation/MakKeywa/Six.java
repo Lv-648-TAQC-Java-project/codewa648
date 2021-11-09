@@ -61,7 +61,7 @@ public class Six implements com.org.ita.kata.Six {
         }
         return (diffSquareSum / measures.length);
     }
-    public static String findCity(String town, String strng) {
+    private static String findCity(String town, String strng) {
         String[] townsMeasures = strng.split("\n");
         int indexTheTown = -1;
         for (int i = 0; i < townsMeasures.length; i++) {
@@ -76,7 +76,7 @@ public class Six implements com.org.ita.kata.Six {
         return townsMeasures[indexTheTown];
     }
 
-    public static double[] getMeasures(String town, String strng) {
+    private static double[] getMeasures(String town, String strng) {
         if (findCity(town, strng).equals("")) {
             return null;
         }
@@ -90,7 +90,7 @@ public class Six implements com.org.ita.kata.Six {
         return measures;
     }
 
-    public static double avgMeasures(double[] measures){
+    private static double avgMeasures(double[] measures){
         double sum = 0;
         for (int i = 0; i < measures.length; i++) {
             sum += measures[i];

@@ -5,6 +5,7 @@ import com.org.ita.kata.Eight;
 public class Eigth implements Eight {
     @Override
     public int liters(double time) {
+        if(time<=0){return 0;}
         return (int) Math.floor(time * 0.5);
     }
 
@@ -72,6 +73,7 @@ public class Eigth implements Eight {
     @Override
     public int[] divisibleBy(int[] numbers, int divider) {
         int size=0;
+        if(numbers.length==0 || divider==0){return null;}
         for(int i=0;i<numbers.length;i++){
             if(numbers[i]%divider==0){
                 size++;
