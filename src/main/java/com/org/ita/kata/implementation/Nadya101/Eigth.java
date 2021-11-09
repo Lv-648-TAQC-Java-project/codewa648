@@ -8,7 +8,7 @@ public class Eigth implements Eight {
         if(time>0){
             return (int)(time*0.5);
         }else{
-            return -1;
+            return 0;
         }
     }
 
