@@ -3,19 +3,6 @@ package com.org.ita.kata.implementation.Pidstavskiy;
 import java.math.BigInteger;
 
 public class Five implements com.org.ita.kata.Five {
-    @Override
-    public int artificialRain(int[] v) {
-        int[] flowRight = computeRightFlow(v);
-        int[] flowLeft = computeLeftFlow(v);
-
-        int maxWateredPlains = 0;
-
-        for (int i = 0; i < flowLeft.length; i++) {
-            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
-        }
-        return maxWateredPlains;
-    }
-
     public static boolean canFlowLeft(int[] numbers, int i) {
         if (i == 0)
             return false;
@@ -27,7 +14,6 @@ public class Five implements com.org.ita.kata.Five {
             return false;
         return numbers[i + 1] <= numbers[i];
     }
-
 
     public static int[] computeLeftFlow(int[] numbers) {
         int[] result = new int[numbers.length];
@@ -55,6 +41,28 @@ public class Five implements com.org.ita.kata.Five {
         return result;
     }
 
+    public static boolean isPrime(long n) {
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int artificialRain(int[] v) {
+        int[] flowRight = computeRightFlow(v);
+        int[] flowLeft = computeLeftFlow(v);
+
+        int maxWateredPlains = 0;
+
+        for (int i = 0; i < flowLeft.length; i++) {
+            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
+        }
+        return maxWateredPlains;
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         long k = 0;
@@ -67,15 +75,6 @@ public class Five implements com.org.ita.kata.Five {
             }
         }
         return null;
-    }
-
-    public static boolean isPrime(long n) {
-        for (int i = 2; i < n; i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override

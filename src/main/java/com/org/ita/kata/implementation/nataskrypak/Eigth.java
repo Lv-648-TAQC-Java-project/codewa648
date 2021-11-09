@@ -7,10 +7,12 @@ public class Eigth implements Eight {
     public int liters(double time) {
         return (int) Math.floor(time / 2);
     }
+
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
         return length * width * height;
     }
+
     @Override
     public float mpgToKPM(float mpg) {
         return (float) Math.round(mpg * 1.609344 / 4.54609188 * 100) / 100;
@@ -19,11 +21,11 @@ public class Eigth implements Eight {
     @Override
     public int[] squareOrSquareRoot(int[] array) {
 
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
 
-            if (Math.sqrt(array[i]) % 1 == 0){
+            if (Math.sqrt(array[i]) % 1 == 0) {
                 array[i] = (int) Math.sqrt(array[i]);
-            }else{
+            } else {
                 array[i] = array[i] * array[i];
             }
         }
@@ -32,14 +34,14 @@ public class Eigth implements Eight {
 
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
-        if(input == null || input.length == 0){
+        if (input == null || input.length == 0) {
             return new int[0];
         }
         int countPositives = 0, sumNegatives = 0;
-        for(int i = 0; i < input.length; i++){
-            if(input[i] > 0){
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] > 0) {
                 countPositives++;
-            }else{
+            } else {
                 sumNegatives += input[i];
             }
         }
@@ -67,8 +69,8 @@ public class Eigth implements Eight {
             return new int[]{};
         }
         int count = 0;
-        for(int i = 0; i < numbers.length; i++){
-            if(numbers[i] % divider == 0){
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
                 count++;
             }
         }

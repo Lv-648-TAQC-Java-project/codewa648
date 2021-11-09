@@ -24,7 +24,7 @@ public class Viewer {
         System.out.println("Result:" + result + "\n(" + message + ")\n");
     }
 
-    public void printUser(Users user){
-        System.out.println("This is implementation of "+ user.getName());
+    public void printUser(Users user) {
+        System.out.println("This is implementation of " + user.getName());
     }
 }

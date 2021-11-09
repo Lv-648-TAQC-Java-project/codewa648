@@ -1,18 +1,38 @@
 package com.org.ita.kata.implementation.andriy66;
-import static java.util.stream.Collectors.averagingDouble;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.ArrayList;
+
+import static java.util.stream.Collectors.averagingDouble;
 
 public class Six implements com.org.ita.kata.Six {
+    private static List<Double> parseTemp(String town, String strng) {
+        List<Double> temps = new ArrayList<>();
+        for (String line : strng.split("\\n")) {
+            String[] data = line.split(":");
+            if (town.equals(data[0])) {
+                for (String weather : data[1].split(",")) {
+                    String[] temp = weather.split("\\s");
+                    temps.add(Double.parseDouble(temp[1]));
+                }
+                break;
+            }
+        }
+
+        if (temps.isEmpty()) temps.add(-1.0);
+
+        return temps;
+    }
+
     @Override
     public long findNb(long m) {
         long currentVolume = 0;
         long n = 0;
         while (currentVolume < m) {
             n++;
-            currentVolume += Math.pow(n,3);
+            currentVolume += Math.pow(n, 3);
         }
         return currentVolume == m ? n : -1;
     }
@@ -40,7 +60,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double f(double x) {
-        return x/(Math.sqrt(1 + x) + 1);
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     @Override
@@ -57,23 +77,6 @@ public class Six implements com.org.ita.kata.Six {
         return parseTemp(town, strng).stream()
                 .collect(averagingDouble(n -> (n - mean) * (n - mean)));
     }
-    private static List<Double> parseTemp(String town, String strng) {
-        List<Double> temps = new ArrayList<>();
-        for (String line : strng.split("\\n")) {
-            String[] data = line.split(":");
-            if (town.equals(data[0])) {
-                for (String weather : data[1].split(",")) {
-                    String[] temp = weather.split("\\s");
-                    temps.add(Double.parseDouble(temp[1]));
-                }
-                break;
-            }
-        }
-
-        if (temps.isEmpty()) temps.add(-1.0);
-
-        return temps;
-    }
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
@@ -82,7 +85,7 @@ public class Six implements com.org.ita.kata.Six {
             return "";
         }
         if (games.isEmpty()) {
-            return toFind+":This team didn't play!";
+            return toFind + ":This team didn't play!";
         }
         List<String[]> teams = games.stream().map(game -> game.split("\\s\\d+(\\W|$)")).collect(Collectors.toList());
         List<Integer[]> scores = games.stream()
@@ -138,7 +141,7 @@ public class Six implements com.org.ita.kata.Six {
         for (String i : lstOf1stLetter) {
             sum = 0;
             for (String j : lstOfArt) {
-                sum += j.substring(0,1).equals(i) ? Integer.parseInt(j.replaceAll("[^0-9]","")) : 0;
+                sum += j.substring(0, 1).equals(i) ? Integer.parseInt(j.replaceAll("[^0-9]", "")) : 0;
             }
             res += " - (" + i + " : " + sum + ")";
         }

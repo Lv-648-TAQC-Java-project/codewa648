@@ -1,26 +1,27 @@
 package com.org.ita.kata;
+
 import com.org.ita.utils.ConsoleScanner;
 import com.org.ita.utils.Viewer;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 public class ReadDoubleArray {
     InputStream defaultInputStream;
+
     @BeforeMethod
     public void readDoubleArrayTestBeforeMethod() {
-      defaultInputStream = System.in;
+        defaultInputStream = System.in;
     }
 
     @DataProvider
     public Object[][] readDoubleArrayValidDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"1", new double[]{1}},
                 {"1,2", new double[]{1, 2}},
                 {"1,2,3", new double[]{1, 2, 3}}

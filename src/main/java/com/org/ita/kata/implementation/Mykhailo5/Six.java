@@ -6,14 +6,13 @@ public class Six implements com.org.ita.kata.Six {
         long sum = 0;
         int counter = 0;
 
-        while(sum<m){
+        while (sum < m) {
             counter++;
-            sum+=(long)counter*counter*counter;
+            sum += (long) counter * counter * counter;
         }
-        if(sum==m){
+        if (sum == m) {
             return counter;
-        }
-        else{
+        } else {
             return -1;
         }
     }
@@ -21,11 +20,11 @@ public class Six implements com.org.ita.kata.Six {
     @Override
     public String balance(String book) {
         StringBuilder result = new StringBuilder();
-        String[] split = book.replaceAll("[^a-zA-Z0-9 \\n.]","").replaceAll("  ", " ").split("\n");
+        String[] split = book.replaceAll("[^a-zA-Z0-9 \\n.]", "").replaceAll("  ", " ").split("\n");
         double cash = Double.parseDouble(split[0]);
         double expense = 0;
         result.append("Original Balance: ").append(String.format("%.2f", cash)).append("\\r\\n");
-        for(int i = 1; i < split.length; i++) {
+        for (int i = 1; i < split.length; i++) {
             String[] splitItem = split[i].split(" ");
             double itemExpense = Double.parseDouble(splitItem[splitItem.length - 1]);
             cash -= itemExpense;
@@ -40,7 +39,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public double f(double x) {
-        return x/(1+Math.sqrt(x+1));
+        return x / (1 + Math.sqrt(x + 1));
     }
 
     @Override
@@ -92,7 +91,7 @@ public class Six implements com.org.ita.kata.Six {
 
             sum += Math.pow((Double.parseDouble(recs[i].split(" ")[1]) - mean(town, strng)), 2);
         }
-        return sum/12.0;
+        return sum / 12.0;
     }
 
     @Override
@@ -105,14 +104,14 @@ public class Six implements com.org.ita.kata.Six {
         int points = 0;
         String rezult = "";
 
-        if(toFind.equals(rezult)){
+        if (toFind.equals(rezult)) {
             return rezult;
         }
 
         String[] Matches = resultSheet.split(",");
         for (int i = 0; i < Matches.length; i++) {
-            if(Matches[i].matches(".*[0-9]+[.][0-9]+.*")){
-                rezult = "Error(float number):"  + Matches[i];
+            if (Matches[i].matches(".*[0-9]+[.][0-9]+.*")) {
+                rezult = "Error(float number):" + Matches[i];
                 return rezult;
             }
         }
@@ -136,8 +135,7 @@ public class Six implements com.org.ita.kata.Six {
                     } else {
                         Team2[i] += parseOneMatch[x] + " ";
                     }
-                }
-                else {
+                } else {
                     if (!firstTeamParsed) {
                         scoresTeam1[i] = Integer.parseInt(parseOneMatch[x]);
                         firstTeamParsed = true;
@@ -183,7 +181,7 @@ public class Six implements com.org.ita.kata.Six {
             }
         }
         if (!teamFound) {
-            rezult =  toFind + ":This team didn't play!";
+            rezult = toFind + ":This team didn't play!";
         } else {
             rezult = toFind + ":" + "W=" + wins + ";D=" + draws + ";L=" + loses + ";Scored=" + scores + ";Conceded=" + concedes + ";Points=" + points;
         }
@@ -192,11 +190,11 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        if(lstOfArt.length==0 || lstOf1stLetter.length==0){
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
             return "";
         }
         String answer = "";
-        for (int i = 0; i < lstOf1stLetter.length ; i++) {
+        for (int i = 0; i < lstOf1stLetter.length; i++) {
             String bigLetter = lstOf1stLetter[i];
             int count = 0;
             for (int x = 0; x < lstOfArt.length; x++) {

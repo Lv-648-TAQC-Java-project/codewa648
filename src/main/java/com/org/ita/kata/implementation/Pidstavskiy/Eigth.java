@@ -3,6 +3,17 @@ package com.org.ita.kata.implementation.Pidstavskiy;
 import com.org.ita.kata.Eight;
 
 public class Eigth implements Eight {
+    public static double fact(double n) {
+        int result = 1;
+        if (n < 0) {
+            return 0;
+        }
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
     @Override
     public int liters(double time) {
         if (time < 0) {
@@ -67,17 +78,6 @@ public class Eigth implements Eight {
             return true;
         }
         return ((fact(n - 1.0) + 1.0) / (n * n)) % 1 == 0;
-    }
-
-    public static double fact(double n) {
-        int result = 1;
-        if (n < 0) {
-            return 0;
-        }
-        for (int i = 2; i <= n; i++) {
-            result *= i;
-        }
-        return result;
     }
 
     @Override

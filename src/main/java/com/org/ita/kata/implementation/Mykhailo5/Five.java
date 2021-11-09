@@ -3,6 +3,15 @@ package com.org.ita.kata.implementation.Mykhailo5;
 import java.math.BigInteger;
 
 public class Five implements com.org.ita.kata.Five {
+    public static boolean isPrime(long num) {
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public int artificialRain(int[] v) {
         int k = 0;
@@ -10,10 +19,9 @@ public class Five implements com.org.ita.kata.Five {
         int size = 1;
 
         for (int i = 1; i < v.length; i++) {
-            if (v[i] < v[i-1]){
+            if (v[i] < v[i - 1]) {
                 low = i;
-            }
-            else if (v[i] > v[i-1]) {
+            } else if (v[i] > v[i - 1]) {
                 k = Math.max(k, size);
                 size = i - low;
             }
@@ -22,23 +30,15 @@ public class Five implements com.org.ita.kata.Five {
         return Math.max(k, size);
     }
 
-    public static boolean isPrime(long num){
-        for(int i=2; i < num; i++) {
-            if (num % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
     @Override
     public long[] gap(int g, long m, long n) {
         long prime = 0;
         for (long i = m; i < n; i++) {
-            if(isPrime(i)){
-                if(i-prime==g) {
+            if (isPrime(i)) {
+                if (i - prime == g) {
                     return new long[]{prime, i};
                 }
-                prime=i;
+                prime = i;
             }
         }
         return null;
@@ -48,7 +48,7 @@ public class Five implements com.org.ita.kata.Five {
     public int zeros(int n) {
         int count = 0;
         for (int i = 5; i <= n; i *= 5) {
-            count+=n/i;
+            count += n / i;
         }
         return count;
     }
@@ -72,7 +72,7 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public double solveSum(double m) {
-        return ((2.0 * m + 1.0 - Math.sqrt(4.0 * m + 1.0))/(2.0 * m));
+        return ((2.0 * m + 1.0 - Math.sqrt(4.0 * m + 1.0)) / (2.0 * m));
     }
 
     @Override

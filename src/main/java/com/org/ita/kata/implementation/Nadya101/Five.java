@@ -3,17 +3,6 @@ package com.org.ita.kata.implementation.Nadya101;
 import java.math.BigInteger;
 
 public class Five implements com.org.ita.kata.Five {
-    @Override
-    public int artificialRain(int[] v) {
-        int[] flowRight = Five.computeRightFlow(v);
-        int[] flowLeft = Five.computeLeftFlow(v);
-        int maxWateredPlains = 0;
-        for (int i = 0; i < flowLeft.length; i++) {
-            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
-        }
-        return maxWateredPlains;
-    }
-
     static boolean canFlowLeft(int[] numbers, int i) {
         if (i == 0)
             return false;
@@ -50,6 +39,26 @@ public class Five implements com.org.ita.kata.Five {
         return result;
     }
 
+    public static boolean isPrime(long i) {
+        for (long j = 2; j * j <= i; j++) {
+            if (i % j == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int artificialRain(int[] v) {
+        int[] flowRight = Five.computeRightFlow(v);
+        int[] flowLeft = Five.computeLeftFlow(v);
+        int maxWateredPlains = 0;
+        for (int i = 0; i < flowLeft.length; i++) {
+            maxWateredPlains = Math.max(flowLeft[i] + flowRight[i] + 1, maxWateredPlains);
+        }
+        return maxWateredPlains;
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         long last = -1;
@@ -62,15 +71,6 @@ public class Five implements com.org.ita.kata.Five {
             }
         }
         return null;
-    }
-
-    public static boolean isPrime(long i) {
-        for (long j = 2; j * j <= i; j++) {
-            if (i % j == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override
@@ -100,13 +100,13 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public long[] smallest(long n) {
-        String str = ""+n;
-        long[] result = new long[]{Long.MAX_VALUE,0,0};
-        for (int i=str.length()-1; i>=0; i--) {
-            String str1=str.substring(0,i)+str.substring(i+1);
-            for (int j=str.length()-1; j>=0; j--) {
-                long tmp = Long.parseLong(str1.substring(0,j)+str.charAt(i)+str1.substring(j));
-                if (tmp <= result[0]) result = new long[]{tmp,i,j};
+        String str = "" + n;
+        long[] result = new long[]{Long.MAX_VALUE, 0, 0};
+        for (int i = str.length() - 1; i >= 0; i--) {
+            String str1 = str.substring(0, i) + str.substring(i + 1);
+            for (int j = str.length() - 1; j >= 0; j--) {
+                long tmp = Long.parseLong(str1.substring(0, j) + str.charAt(i) + str1.substring(j));
+                if (tmp <= result[0]) result = new long[]{tmp, i, j};
             }
         }
         return result;

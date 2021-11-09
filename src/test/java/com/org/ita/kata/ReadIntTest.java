@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
@@ -20,7 +21,7 @@ public class ReadIntTest {
 
     @DataProvider
     public Object[][] readIntTestDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {"0", 0},
                 {"1", 1},
                 {"-1", -1},

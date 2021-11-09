@@ -1,6 +1,43 @@
 package com.org.ita.kata.implementation.MakKeywa;
 
 public class Six implements com.org.ita.kata.Six {
+    private static String findCity(String town, String strng) {
+        String[] townsMeasures = strng.split("\n");
+        int indexTheTown = -1;
+        for (int i = 0; i < townsMeasures.length; i++) {
+            if (townsMeasures[i].contains(town + ":")) {
+                indexTheTown = i;
+                break;
+            }
+        }
+        if (indexTheTown == -1) {
+            return "";
+        }
+        return townsMeasures[indexTheTown];
+    }
+
+    private static double[] getMeasures(String town, String strng) {
+        if (findCity(town, strng).equals("")) {
+            return null;
+        }
+        String[] monthMeasures = findCity(town, strng).substring(town.length() + 1).split(",");
+        String[] oneRecord;
+        double[] measures = new double[monthMeasures.length];
+        for (int i = 0; i < monthMeasures.length; i++) {
+            oneRecord = monthMeasures[i].split(" ");
+            measures[i] = Double.parseDouble(oneRecord[1]);
+        }
+        return measures;
+    }
+
+    private static double avgMeasures(double[] measures) {
+        double sum = 0;
+        for (int i = 0; i < measures.length; i++) {
+            sum += measures[i];
+        }
+        return sum / measures.length;
+    }
+
     @Override
     public long findNb(long m) {
         long currentVolume = 0;
@@ -60,42 +97,6 @@ public class Six implements com.org.ita.kata.Six {
             diffSquareSum += diff * diff;
         }
         return (diffSquareSum / measures.length);
-    }
-    private static String findCity(String town, String strng) {
-        String[] townsMeasures = strng.split("\n");
-        int indexTheTown = -1;
-        for (int i = 0; i < townsMeasures.length; i++) {
-            if (townsMeasures[i].contains(town + ":")) {
-                indexTheTown = i;
-                break;
-            }
-        }
-        if (indexTheTown == -1) {
-            return "";
-        }
-        return townsMeasures[indexTheTown];
-    }
-
-    private static double[] getMeasures(String town, String strng) {
-        if (findCity(town, strng).equals("")) {
-            return null;
-        }
-        String[] monthMeasures = findCity(town, strng).substring(town.length() + 1).split(",");
-        String[] oneRecord;
-        double[] measures = new double[monthMeasures.length];
-        for (int i = 0; i < monthMeasures.length; i++) {
-            oneRecord = monthMeasures[i].split(" ");
-            measures[i] = Double.parseDouble(oneRecord[1]);
-        }
-        return measures;
-    }
-
-    private static double avgMeasures(double[] measures){
-        double sum = 0;
-        for (int i = 0; i < measures.length; i++) {
-            sum += measures[i];
-        }
-        return sum / measures.length;
     }
 
     @Override
@@ -207,7 +208,7 @@ public class Six implements com.org.ita.kata.Six {
                 );
             }
         }
-        for (int i = 0; i < amount.length ; i++) {
+        for (int i = 0; i < amount.length; i++) {
             if (i == amount.length - 1) {
                 res += "(" + lstOf1stLetter[i] + " : " + amount[i] + ")";
                 break;
