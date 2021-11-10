@@ -66,6 +66,12 @@ public class Five implements com.org.ita.kata.Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
+        if (n.compareTo(BigInteger.valueOf(1)) < 0) {
+            return BigInteger.ZERO;
+        }
+        if (n.compareTo(BigInteger.valueOf(2)) < 0) {
+            return BigInteger.valueOf(4);
+        }
         BigInteger[] fibo = new BigInteger[n.intValue() + 1];
         fibo[0] = BigInteger.valueOf(1);
         fibo[1] = BigInteger.valueOf(1);

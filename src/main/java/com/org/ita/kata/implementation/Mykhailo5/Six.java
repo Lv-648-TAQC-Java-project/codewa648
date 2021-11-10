@@ -19,6 +19,9 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
+        if (book.length() == 0) {
+            return "";
+        }
         StringBuilder result = new StringBuilder();
         String[] split = book.replaceAll("[^a-zA-Z0-9 \\n.]", "").replaceAll("  ", " ").split("\n");
         double cash = Double.parseDouble(split[0]);

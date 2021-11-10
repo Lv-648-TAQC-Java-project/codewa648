@@ -19,7 +19,7 @@ public class Eigth implements Eight {
         if (length > 0 & width > 0 & height > 0) {
             return (int) (length * width * height);
         } else {
-            return -1;
+            return 0;
         }
     }
 

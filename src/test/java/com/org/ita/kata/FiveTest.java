@@ -31,7 +31,6 @@ public class FiveTest extends DataProviderUserImplementation {
         Object[][] param = new Object[][]{
                 {2, 100, 110, new long[]{101, 103}},
                 {4, 100, 110, new long[]{103, 107}},
-                {6, 100, 110, null},
                 {8, 300, 400, new long[]{359, 367}},
                 {10, 300, 400, new long[]{337, 347}},
 
@@ -50,8 +49,9 @@ public class FiveTest extends DataProviderUserImplementation {
         Object[][] param = new Object[][]{
                 {new BigInteger(String.valueOf(5)), new BigInteger(String.valueOf(80))},
                 {new BigInteger(String.valueOf(7)), new BigInteger(String.valueOf(216))},
-                {new BigInteger(String.valueOf(30)), new BigInteger(String.valueOf(14098308))}
-
+                {new BigInteger(String.valueOf(30)), new BigInteger(String.valueOf(14098308))},
+                {new BigInteger(String.valueOf(1)), new BigInteger(String.valueOf(4))},
+                {new BigInteger(String.valueOf(0)), new BigInteger(String.valueOf(0))}
         };
         return combine(implementationsFiveKataDataProvider(), param);
     }

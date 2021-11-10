@@ -34,6 +34,9 @@ public class Six implements com.org.ita.kata.Six {
 	So as not to have a too long result string we don't ask for a properly formatted result.*/
     @Override
     public String balance(String book) {
+        if (book.length() == 0) {
+            return "";
+        }
         StringBuilder bookBuilder = new StringBuilder();
         double totalBalance = 0;
         double totalExpense = 0;
