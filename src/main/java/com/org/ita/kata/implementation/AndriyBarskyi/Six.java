@@ -14,7 +14,7 @@ public class Six implements com.org.ita.kata.Six {
 
     @Override
     public String balance(String book) {
-        book = book.replaceAll("[^0-9A-z\n ]", "");
+        book = book.replaceAll("[^0-9A-z\\\\.\\n ]", "");
         book = book.replaceAll("  ", " ");
         book = book.replaceAll(" \n", "\n");
         book = book.trim();
