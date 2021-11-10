@@ -17,7 +17,7 @@ public class Six implements com.org.ita.kata.Six {
         if (book.length() == 0) {
             return "";
         }
-        book = book.replaceAll("[^0-9A-z\n ]", "");
+        book = book.replaceAll("[^0-9A-z\\\\.\\n ]", "");
         book = book.replaceAll("  ", " ");
         book = book.replaceAll(" \n", "\n");
         book = book.trim();
