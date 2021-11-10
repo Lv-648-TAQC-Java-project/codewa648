@@ -90,7 +90,6 @@ public class EigthTest extends DataProviderUserImplementation {
                 {new int[]{1, 2, 3, 4, 5, 6}, 3, new int[]{3, 6}},
                 {new int[]{0, 1, 2, 3, 4, 5, 6}, 4, new int[]{0, 4}},
                 {new int[]{-1, -2, 3, -4, 5, 10}, 2, new int[]{-2, -4, 10}},
-                {null, 8, null},
                 {new int[]{0, -2, 3, 4, 9, -33}, -3, new int[]{0, 3, 9, -33}}
         };
         return combine(implementationsEightKataDataProvider(), param);
